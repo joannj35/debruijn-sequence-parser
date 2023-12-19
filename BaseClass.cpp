@@ -24,12 +24,9 @@ BaseClass::BaseClass(QWidget* parent) : QDialog(parent)
     setLayout(mainLayout);
 }
 
-void BaseClass::windowSetup() {
-    QString fileName = QString("logo.png");
-    QString directoryPath = QString("/logo/");
-    QString filePath = QCoreApplication::applicationDirPath() + directoryPath + fileName;
-
-    QPixmap logoPixmap(filePath);
+void BaseClass::windowSetup()
+{
+    QPixmap logoPixmap(":/mainWindow/logo.png");
     setWindowIcon(QIcon(logoPixmap));
     setWindowFlags(windowFlags() | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint);
     setWindowTitle("DSP");
