@@ -1,8 +1,7 @@
 #include "DataDisplayWindow.h"
 
-DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int complexity, int totaldbSeq, int totalSmallSeq, QString directoryPath)
-    : BaseClass(parent), field(field), span(span), complexity(complexity),
-    totaldbSeq(totaldbSeq), totalSmallSeq(totalSmallSeq), directoryPath(directoryPath)
+DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int complexity, int totaldbSeq, int totalSmallSeq)
+    : BaseClass(parent), field(field), span(span), complexity(complexity), totaldbSeq(totaldbSeq), totalSmallSeq(totalSmallSeq)
 {
     // top label
     std::string str = "De-Bruijn Sequences\n Over Field F" + std::to_string(field)
@@ -175,23 +174,24 @@ void DataDisplayWindow::onOpenFileClicked()
     QString fileName = "";
 
     if (isNoFilterChecked) { // No filters applied
-        fileName = QString("field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
-        openFileForUser(directoryPath + fileName);
+        fileName = QString(":/results/data/F_%1/span_%2/%3/field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
+        openFileForUser(fileName);
     }
 
     if (isFilterZerosChecked) { // Zero Result Sequences Excluded
-        fileName = QString("%1_zeros_excluded.txt").arg(complexity);
-        openFileForUser(directoryPath + "zero_result_excluded/" + fileName);
+        fileName = QString(":/results/data/F_%1/span_%2/%3/%3_zeros_excluded.txt").arg(field).arg(span).arg(complexity);
+        openFileForUser(fileName);
     }
 
     if (isFilterNonZerosChecked) { // Non-Zero Result Sequences Excluded
-        fileName = QString("%1_non_zero_excluded.txt").arg(complexity);
-        openFileForUser(directoryPath + "non_zero_result_excluded/" + fileName);
+        fileName = QString(":/results/data/F_%1/span_%2/%3/%3_non_zero_excluded.txt").arg(field).arg(span).arg(complexity);
+        openFileForUser(fileName);
     }
 
     if (isFilterSmallSeqChecked) { // Small Sequences Only
-        fileName = QString("%1_small_seq_only.txt").arg(complexity);
-        openFileForUser(directoryPath + "small_sequences_only/" + fileName);
+        int offset = complexity - qPow(field, span - 1);
+        fileName = QString(":/results/data/F_%1/span_%2/%3/sequences_of_complexity_%4.txt").arg(field).arg(span).arg(complexity).arg(offset);
+        openFileForUser(fileName);
     }
 }
 
@@ -218,8 +218,7 @@ void DataDisplayWindow::onInspectButtonClicked()
     QString userInput = smallSequenceInput->toPlainText();
     QStringList smallSequences = userInput.split('\n', Qt::SkipEmptyParts);
 
-    QString fileName = QString("field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
-    QString ReadFilePath = directoryPath + fileName;
+    QString ReadFilePath = QString(":/results/data/F_%1/span_%2/%3/field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
 
     QFile ReadFile(ReadFilePath);
     if (!ReadFile.open(QIODevice::ReadOnly | QIODevice::Text)) {

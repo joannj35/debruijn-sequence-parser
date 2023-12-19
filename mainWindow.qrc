@@ -1,5 +1,24 @@
 <RCC>
-    <qresource prefix="/mainWindow">
+    <qresource prefix="/images">
         <file>logo.png</file>
+    </qresource>
+    <qresource prefix="/results">
+        <file>data/F_2/span_7/71/field_2_span_7_complexity_71.txt</file>
+        <file>data/F_2/span_7/72/field_2_span_7_complexity_72.txt</file>
+        <file>data/F_2/span_7/73/field_2_span_7_complexity_73.txt</file>
+        <file>data/F_2/span_7/74/field_2_span_7_complexity_74.txt</file>
+        <file>data/F_2/span_7/75/field_2_span_7_complexity_75.txt</file>
+        <file>data/F_2/span_7/76/field_2_span_7_complexity_76.txt</file>
+        <file>data/F_2/span_7/77/field_2_span_7_complexity_77.txt</file>
+        <file>data/F_2/span_7/78/field_2_span_7_complexity_78.txt</file>
+        <file>data/F_2/span_7/79/field_2_span_7_complexity_79.txt</file>
+        <file>data/F_2/span_7/80/field_2_span_7_complexity_80.txt</file>
+        <file>data/F_2/span_7/81/field_2_span_7_complexity_81.txt</file>
+        <file>data/F_2/span_7/82/field_2_span_7_complexity_82.txt</file>
+        <file>data/F_2/span_7/83/field_2_span_7_complexity_83.txt</file>
+        <file>data/F_2/span_7/84/field_2_span_7_complexity_84.txt</file>
+        <file>data/F_2/span_7/85/field_2_span_7_complexity_85.txt</file>
+        <file>data/F_2/span_7/86/field_2_span_7_complexity_86.txt</file>
+        <file>data/F_2/span_7/87/field_2_span_7_complexity_87.txt</file>
     </qresource>
 </RCC>

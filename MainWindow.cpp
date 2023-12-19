@@ -144,14 +144,14 @@ void MainWindow::onNextButtonClicked() {
 
     // fetch corresponding file
     QString fileName = QString("field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
-    QString complexityDirectoryPath = QCoreApplication::applicationDirPath() + QString("/data/F_%1/span_%2/%3/").arg(field).arg(span).arg(complexity);
+    QString complexityDirectoryPath = QString(":/results/data/F_%1/span_%2/%3/").arg(field).arg(span).arg(complexity);
     QString filePath = complexityDirectoryPath + fileName;
 
     int returnVal = getSequenceData(totaldbSeq, totalSmallSeq, filePath);
     if (returnVal == ERR)
         return;
 
-    DataDisplayWindow* dataDisplayWindow = new DataDisplayWindow(this, field, span, complexity, totaldbSeq, totalSmallSeq, complexityDirectoryPath);
+    DataDisplayWindow* dataDisplayWindow = new DataDisplayWindow(this, field, span, complexity, totaldbSeq, totalSmallSeq);
     dataDisplayWindow->setAttribute(Qt::WA_DeleteOnClose);
     dataDisplayWindow->show();
 }
