@@ -1,4 +1,4 @@
-#include "dataDisplayWindow.h"
+#include "DataDisplayWindow.h"
 
 DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int complexity, int totaldbSeq, int totalSmallSeq, QString directoryPath)
     : BaseClass(parent), field(field), span(span), complexity(complexity),
