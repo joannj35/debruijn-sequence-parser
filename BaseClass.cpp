@@ -26,7 +26,7 @@ BaseClass::BaseClass(QWidget* parent) : QDialog(parent)
 
 void BaseClass::windowSetup()
 {
-    QPixmap logoPixmap(":/mainWindow/logo.png");
+    QPixmap logoPixmap(":/images/logo.png");
     setWindowIcon(QIcon(logoPixmap));
     setWindowFlags(windowFlags() | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint);
     setWindowTitle("DSP");
