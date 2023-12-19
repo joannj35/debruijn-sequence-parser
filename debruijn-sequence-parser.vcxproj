@@ -90,7 +90,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="mainWindow.qrc" />
-    <QtUic Include="mainWindow.ui" />
     <QtMoc Include="MainWindow.h" />
     <ClCompile Include="BaseClass.cpp" />
     <ClCompile Include="DataDisplayWindow.cpp" />
