@@ -10,6 +10,7 @@
 #include <QHBoxLayout>
 #include <QDialogButtonBox>
 #include <QMenuBar>
+#include <QMessageBox>
 
 class BaseClass : public QDialog
 {
@@ -32,5 +33,3 @@ protected:
 };
 
 #endif // BASECLASS_H
-
-

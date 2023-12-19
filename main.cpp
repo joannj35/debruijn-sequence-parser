@@ -1,15 +1,17 @@
-#include "mainWindow.h"
+#include "MainWindow.h"
 #include <QApplication>
+#include <QPalette>
 
-int main(int argc, char* argv[])
-{
+bool isDarkMode();
+
+int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
     MainWindow mw;
     mw.show();
 
-    app.setStyleSheet(
+    QString commonStyles =
         "QPushButton { "
-        "  background-color: #2196F3; " // Vibrant blue
+        "  background-color: #2196F3; " // blue
         "  color: white; " // text color
         "  border-radius: 4px; " // Rounded corners
         "  font-weight: bold; "
@@ -27,9 +29,29 @@ int main(int argc, char* argv[])
 
         "QDialogButtonBox > QPushButton { "
         "  min-width: 50px; " // Minimum width for both buttons
-        "}"
-    );
+        "}";
+
+    QString messageBoxStyle;
+    if (isDarkMode()) {
+        messageBoxStyle = "QMessageBox { background-color: #444444; }"; // dark gray
+    }
+    else {
+        messageBoxStyle = "QMessageBox { background-color: #eeeeee; }"; // light gray
+    }
+
+    app.setStyleSheet(commonStyles + messageBoxStyle);
 
     return app.exec();
 }
 
+bool isDarkMode() {
+    QPalette palette = QApplication::palette();
+    QColor windowTextColor = palette.color(QPalette::WindowText);
+    QColor windowBackgroundColor = palette.color(QPalette::Window);
+
+    // Calculate the luminance (brightness) of the window text color
+    double luminance = 0.299 * windowTextColor.redF() + 0.587 * windowTextColor.greenF() + 0.114 * windowTextColor.blueF();
+
+    // Assuming dark mode if the luminance is low
+    return luminance > 0.5;
+}
