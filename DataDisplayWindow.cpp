@@ -174,17 +174,17 @@ void DataDisplayWindow::onOpenFileClicked()
     QString fileName = "";
 
     if (isNoFilterChecked) { // No filters applied
-        fileName = QString(":/results/data/F_%1/span_%2/%3/field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
+        fileName = QString("/data/F_%1/span_%2/%3/field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
         openFileForUser(fileName);
     }
 
     if (isFilterZerosChecked) { // Zero Result Sequences Excluded
-        fileName = QString(":/results/data/F_%1/span_%2/%3/%3_zeros_excluded.txt").arg(field).arg(span).arg(complexity);
+        fileName = QString("/data/F_%1/span_%2/%3/%3_zeros_excluded.txt").arg(field).arg(span).arg(complexity);
         openFileForUser(fileName);
     }
 
     if (isFilterNonZerosChecked) { // Non-Zero Result Sequences Excluded
-        fileName = QString(":/results/data/F_%1/span_%2/%3/%3_non_zero_excluded.txt").arg(field).arg(span).arg(complexity);
+        fileName = QString("/data/F_%1/span_%2/%3/%3_non_zero_excluded.txt").arg(field).arg(span).arg(complexity);
         openFileForUser(fileName);
     }
 
