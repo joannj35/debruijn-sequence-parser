@@ -38,6 +38,7 @@
         <file>data/F_2/span_6/53/field_2_span_6_complexity_53.txt</file>
         <file>data/F_2/span_6/54/field_2_span_6_complexity_54.txt</file>
         <file>data/F_2/span_6/55/field_2_span_6_complexity_55.txt</file>
+        <file>data/F_2/span_6/56/field_2_span_6_complexity_56.txt</file>
     </qresource>
     <qresource prefix="/binarySmallSequences">
         <file>data/F_2/smallSequences/sequences_of_complexity_6.txt</file>
