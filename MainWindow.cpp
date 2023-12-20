@@ -143,10 +143,8 @@ void MainWindow::onNextButtonClicked() {
     }
 
     // fetch corresponding file
-    QString fileName = QString("field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
-    QString complexityDirectoryPath = QString(":/results/data/F_%1/span_%2/%3/").arg(field).arg(span).arg(complexity);
-    QString filePath = complexityDirectoryPath + fileName;
-
+    QString filePath = QString(":/results/data/F_%1/span_%2/%3/field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
+    
     int returnVal = getSequenceData(totaldbSeq, totalSmallSeq, filePath);
     if (returnVal == ERR)
         return;
