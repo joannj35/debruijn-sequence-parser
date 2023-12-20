@@ -194,17 +194,25 @@ void DataDisplayWindow::onOpenFileClicked()
         else
         {
             int offset = complexity - qPow(field, span - 1);
-            fileName = QString(":/binarySmallSequences/sequences_of_complexity_%1.txt").arg(offset);
+            fileName = QString("/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
             openFileForUser(fileName);
         }
     }
 }
 
 void DataDisplayWindow::openFileForUser(const QString& filePath)
-{
-    QUrl fileUrl = QUrl::fromLocalFile(filePath);
+{ 
+    QString appDir = QCoreApplication::applicationDirPath();
+
+#ifdef _DEBUG // go up two directories from the Release/Debug folder
+    appDir = QDir(appDir).absoluteFilePath("../../"); 
+#endif
+
+    QString localFilePath = appDir + filePath;
+    QUrl fileUrl = QUrl::fromLocalFile(localFilePath);
+
     if (!QDesktopServices::openUrl(fileUrl)) {
-        QMessageBox::warning(this, tr("File Open Error"), tr("Unable to open file: ") + filePath);
+        QMessageBox::warning(this, tr("File Open Error"), tr("Unable to open file: ") + localFilePath);
     }
 }
 
