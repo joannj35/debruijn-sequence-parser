@@ -189,9 +189,14 @@ void DataDisplayWindow::onOpenFileClicked()
     }
 
     if (isFilterSmallSeqChecked) { // Small Sequences Only
-        int offset = complexity - qPow(field, span - 1);
-        fileName = QString(":/results/data/F_%1/span_%2/%3/sequences_of_complexity_%4.txt").arg(field).arg(span).arg(complexity).arg(offset);
-        openFileForUser(fileName);
+        if (field != 2)
+            QMessageBox::information(this, tr(""), tr("This action is applicable for binary fields only"));
+        else
+        {
+            int offset = complexity - qPow(field, span - 1);
+            fileName = QString(":/binarySmallSequences/sequences_of_complexity_%1.txt").arg(offset);
+            openFileForUser(fileName);
+        }
     }
 }
 
