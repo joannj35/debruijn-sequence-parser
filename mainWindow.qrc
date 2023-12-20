@@ -20,6 +20,23 @@
         <file>data/F_2/span_7/85/field_2_span_7_complexity_85.txt</file>
         <file>data/F_2/span_7/86/field_2_span_7_complexity_86.txt</file>
         <file>data/F_2/span_7/87/field_2_span_7_complexity_87.txt</file>
+        <file>data/F_2/span_6/38/field_2_span_6_complexity_38.txt</file>
+        <file>data/F_2/span_6/39/field_2_span_6_complexity_39.txt</file>
+        <file>data/F_2/span_6/40/field_2_span_6_complexity_40.txt</file>
+        <file>data/F_2/span_6/41/field_2_span_6_complexity_41.txt</file>
+        <file>data/F_2/span_6/42/field_2_span_6_complexity_42.txt</file>
+        <file>data/F_2/span_6/43/field_2_span_6_complexity_43.txt</file>
+        <file>data/F_2/span_6/44/field_2_span_6_complexity_44.txt</file>
+        <file>data/F_2/span_6/45/field_2_span_6_complexity_45.txt</file>
+        <file>data/F_2/span_6/46/field_2_span_6_complexity_46.txt</file>
+        <file>data/F_2/span_6/47/field_2_span_6_complexity_47.txt</file>
+        <file>data/F_2/span_6/48/field_2_span_6_complexity_48.txt</file>
+        <file>data/F_2/span_6/49/field_2_span_6_complexity_49.txt</file>
+        <file>data/F_2/span_6/50/field_2_span_6_complexity_50.txt</file>
+        <file>data/F_2/span_6/51/field_2_span_6_complexity_51.txt</file>
+        <file>data/F_2/span_6/52/field_2_span_6_complexity_52.txt</file>
+        <file>data/F_2/span_6/53/field_2_span_6_complexity_53.txt</file>
+        <file>data/F_2/span_6/54/field_2_span_6_complexity_54.txt</file>
     </qresource>
     <qresource prefix="/binarySmallSequences">
         <file>data/F_2/span_7/71/sequences_of_complexity_7.txt</file>
