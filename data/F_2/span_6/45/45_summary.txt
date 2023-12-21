@@ -1,0 +1,4 @@
+total number of sequences of small complexity 13 is: 256
+total number of debruijn sequences of complexity 45 is: 288
+The total number of sequences of small complexity=45 which yield debruijn sequences is: 70
+The total number of sequences of small complexity=45 which DO NOT yield any debruijn sequences is: 186

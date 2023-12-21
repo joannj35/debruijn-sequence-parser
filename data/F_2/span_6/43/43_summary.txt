@@ -1,0 +1,4 @@
+total number of sequences of small complexity 11 is: 64
+total number of debruijn sequences of complexity 43 is: 80
+The total number of sequences of small complexity=43 which yield debruijn sequences is: 18
+The total number of sequences of small complexity=43 which DO NOT yield any debruijn sequences is: 46

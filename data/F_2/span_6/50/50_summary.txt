@@ -1,0 +1,4 @@
+total number of sequences of small complexity 18 is: 4096
+total number of debruijn sequences of complexity 50 is: 5224
+The total number of sequences of small complexity=50 which yield debruijn sequences is: 1379
+The total number of sequences of small complexity=50 which DO NOT yield any debruijn sequences is: 2717

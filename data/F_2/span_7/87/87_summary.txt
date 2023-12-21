@@ -1,0 +1,4 @@
+total number of sequences of small complexity 23 is: 131072
+total number of debruijn sequences of complexity 87 is: 207400
+The total number of sequences of small complexity=87 which yield debruijn sequences is: 40310
+The total number of sequences of small complexity=87 which DO NOT yield any debruijn sequences is: 90762

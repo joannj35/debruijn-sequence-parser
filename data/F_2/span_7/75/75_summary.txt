@@ -1,0 +1,4 @@
+total number of sequences of small complexity 11 is: 64
+total number of debruijn sequences of complexity 75 is: 5760
+The total number of sequences of small complexity=75 which yield debruijn sequences is: 12
+The total number of sequences of small complexity=75 which DO NOT yield any debruijn sequences is: 52

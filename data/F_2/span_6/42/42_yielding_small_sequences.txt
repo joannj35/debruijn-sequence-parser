@@ -1,0 +1,7 @@
+Summary of sequences of small complexity=42 which yield debruijn sequences:
+Total number of sequences in this file: 5
+0000010001010001
+0000010110101111
+0000011110101101
+0010111001111011
+0011011110011101
