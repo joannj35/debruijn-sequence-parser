@@ -1,5 +1,5 @@
 # Script Overview
-This script processes `txt` files to analyze DeBruijn sequences, categorizing them based on complexity. It identifies sequences yielding and not yielding DeBruijn sequences, and generates three outputs for each complexity.
+This script processes `txt` files to analyze DeBruijn sequences ***(OVER BINARY FIELDS ONLY)***, categorizing them based on complexity. It identifies sequences yielding and not yielding DeBruijn sequences, and generates three outputs for each complexity.
 
 ### Input
 The tool takes a single `string` argument: the path to the head directory containing all the output files of the [computation tool](https://github.com/joannj35/debruijn-sequence-complexity-distribution).
