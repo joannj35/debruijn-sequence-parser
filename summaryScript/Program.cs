@@ -27,16 +27,18 @@ namespace parserExtentions
         }
         static void ProcessFile(string filePath)
         {
-            string directoryPath = Path.GetDirectoryName(filePath) ?? throw new Exception($"Path directory returned null"); // complexity direcotry path
+            string ComplexityDirPath = Path.GetDirectoryName(filePath) ?? throw new Exception($"Path directory returned null"); // complexity direcotry path
             string fileContent = File.ReadAllText(filePath);
             string pattern = @"(total number of sequences of small complexity \d+ is: \d+|total number of debruijn sequences of complexity \d+ is: \d+)";
-
+            string spanDirPath = Path.GetDirectoryName(ComplexityDirPath) ?? throw new Exception($"Path directory returned null"); // complexity direcotry path
+            int span = int.Parse(spanDirPath.Split('_')[1]); //assuming directories are like: F_%/span_%/%
+            
             GetValueBasedOnRegex(fileContent, @"complexity (\d+):", out int complexity);
 
-            // file paths
-            string yieldingFilePath = Path.Combine(directoryPath, $"{complexity}_yielding_small_sequences.txt");
-            string nonYieldingFilePath = Path.Combine(directoryPath, $"{complexity}_non_yielding_small_sequences.txt");
-            string summaryFilePath = Path.Combine(directoryPath, $"{complexity}_summary.txt");
+            // output file paths
+            string yieldingFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_yielding_small_sequences.txt");
+            string nonYieldingFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_non_yielding_small_sequences.txt");
+            string summaryFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_summary.txt");
 
             // skip processing if files already exist
             if (File.Exists(yieldingFilePath) || File.Exists(nonYieldingFilePath) || File.Exists(summaryFilePath))
@@ -56,10 +58,10 @@ namespace parserExtentions
 
                     GetSmallSeq(fileContent, out List<string> yieldDb, out List<string> nonYieldDb);
 
-                    summaryWriter.WriteLine($"The total number of sequences of small complexity={complexity} which yield debruijn sequences is: {yieldDb.Count}\n"
-                                  + $"The total number of sequences of small complexity={complexity} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
+                    summaryWriter.WriteLine($"The total number of sequences of small complexity={Math.Pow(2, span - 1)} which yield debruijn sequences is: {yieldDb.Count}\n"
+                                  + $"The total number of sequences of small complexity={Math.Pow(2, span - 1)} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
 
-                    nonZeroWriter.WriteLine($"Summary of sequences of small complexity={complexity} which yield debruijn sequences:\n"
+                    nonZeroWriter.WriteLine($"Summary of sequences of small complexity={Math.Pow(2, span - 1)} which yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {yieldDb.Count}");
                     foreach (var seq in yieldDb)
                         nonZeroWriter.WriteLine($"{seq}");
@@ -79,7 +81,7 @@ namespace parserExtentions
             }
             catch (Exception ex)
             {
-                DeleteFilesForComplexity(directoryPath, complexity);
+                DeleteFilesForComplexity(ComplexityDirPath, complexity);
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
