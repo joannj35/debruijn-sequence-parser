@@ -66,7 +66,7 @@ namespace parserExtentions
                     foreach (var seq in yieldDb)
                         nonZeroWriter.WriteLine($"{seq}");
 
-                    zeroWriter.WriteLine($"Summary of sequences of small complexity={complexity} which DO NOT yield debruijn sequences:\n"
+                    zeroWriter.WriteLine($"Summary of sequences of small complexity={Math.Pow(2, span - 1)} which DO NOT yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {nonYieldDb.Count}");
                     foreach (var seq in nonYieldDb)
                         zeroWriter.WriteLine($"{seq}");
