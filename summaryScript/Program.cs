@@ -58,15 +58,15 @@ namespace parserExtentions
 
                     GetSmallSeq(fileContent, out List<string> yieldDb, out List<string> nonYieldDb);
 
-                    summaryWriter.WriteLine($"The total number of sequences of small complexity={Math.Pow(2, span - 1)} which yield debruijn sequences is: {yieldDb.Count}\n"
-                                  + $"The total number of sequences of small complexity={Math.Pow(2, span - 1)} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
+                    summaryWriter.WriteLine($"The total number of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which yield debruijn sequences is: {yieldDb.Count}\n"
+                                  + $"The total number of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
 
-                    nonZeroWriter.WriteLine($"Summary of sequences of small complexity={Math.Pow(2, span - 1)} which yield debruijn sequences:\n"
+                    nonZeroWriter.WriteLine($"Summary of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {yieldDb.Count}");
                     foreach (var seq in yieldDb)
                         nonZeroWriter.WriteLine($"{seq}");
 
-                    zeroWriter.WriteLine($"Summary of sequences of small complexity={Math.Pow(2, span - 1)} which DO NOT yield debruijn sequences:\n"
+                    zeroWriter.WriteLine($"Summary of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which DO NOT yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {nonYieldDb.Count}");
                     foreach (var seq in nonYieldDb)
                         zeroWriter.WriteLine($"{seq}");
