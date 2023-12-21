@@ -1,0 +1,4 @@
+total number of sequences of small complexity 8 is: 16
+total number of debruijn sequences of complexity 72 is: 0
+The total number of sequences of small complexity=72 which yield debruijn sequences is: 0
+The total number of sequences of small complexity=72 which DO NOT yield any debruijn sequences is: 16
