@@ -4,7 +4,7 @@
 
 ## Overview
 In this project we continue the study of the linear complexity of de Bruijn sequences over finite fields. Our aim is to establish the integer values of
-linear complexity for which there exist de Bruijn sequences of given span over finite fields. **This repository includes the code developed for calculating these complexity distributions.
+linear complexity for which there exist de Bruijn sequences of given span over finite fields.
 
 The repository houses a user-friendly GUI tool designed to visualize the result data of our study, thereby offering a more tangible grasp of the complexity distributions. For the source code of the computational tool that generated the results, please visit the [tool repository](https://github.com/joannj35/debruijn-sequence-complexity-distribution).
 
