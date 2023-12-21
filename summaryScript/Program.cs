@@ -18,7 +18,6 @@ namespace parserExtentions
                 Parallel.ForEach(files, (file) =>
                 {
                     ProcessFile(file);
-                    Console.WriteLine($"Processed: {file}");
                 });
             }
             catch (Exception e)
@@ -34,12 +33,23 @@ namespace parserExtentions
 
             GetValueBasedOnRegex(fileContent, @"complexity (\d+):", out int complexity);
 
+            // file paths
+            string yieldingFilePath = Path.Combine(directoryPath, $"{complexity}_yielding_small_sequences.txt");
+            string nonYieldingFilePath = Path.Combine(directoryPath, $"{complexity}_non_yielding_small_sequences.txt");
+            string summaryFilePath = Path.Combine(directoryPath, $"{complexity}_summary.txt");
+
+            // skip processing if files already exist
+            if (File.Exists(yieldingFilePath) || File.Exists(nonYieldingFilePath) || File.Exists(summaryFilePath))
+            {
+                Console.WriteLine($"Skipping file processing as output files for complexity {complexity} already exist.");
+                return;
+            }
+
             try
             {
-                //The information about sequences is written into three separate files: one for sequences that yield DeBruijn sequences, one for sequences that don't, and a summary file.
-                using (StreamWriter nonZeroWriter = File.AppendText(Path.Combine(directoryPath, $"{complexity}_yielding_small_sequences.txt")))
-                using (StreamWriter zeroWriter = File.AppendText(Path.Combine(directoryPath, $"{complexity}_non_yielding_small_sequences.txt")))
-                using (StreamWriter summaryWriter = File.AppendText(Path.Combine(directoryPath, $"{complexity}_summary.txt")))
+                using (StreamWriter nonZeroWriter = File.AppendText(yieldingFilePath))
+                using (StreamWriter zeroWriter = File.AppendText(nonYieldingFilePath))
+                using (StreamWriter summaryWriter = File.AppendText(summaryFilePath))
                 {
                     foreach (Match match in Regex.Matches(fileContent, pattern))
                         summaryWriter.WriteLine(match.Value);
@@ -63,6 +73,8 @@ namespace parserExtentions
                     GetValueBasedOnRegex(fileContent, @"of small complexity \d+ is: (\d+)", out int total);
                     if (nonYieldDb.Count + yieldDb.Count != total)
                         throw new Exception($"Sanity check for complexity {complexity} has failed! No summary files will be created.");
+
+                    Console.WriteLine($"Processed file of complexity {complexity}");
                 }
             }
             catch (Exception ex)
