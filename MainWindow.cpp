@@ -135,6 +135,8 @@ void MainWindow::onNextButtonClicked() {
     int complexity = complexityComboBox->currentData().toInt();
     int totaldbSeq = -1;
     int totalSmallSeq = -1;
+    int totalYielding = -1;
+    int totalNonYielding = -1;
 
     // Check if any of the values is the placeholder '<select>'
     if (field == 0 || span == 0 || complexity == 0) {
@@ -143,21 +145,24 @@ void MainWindow::onNextButtonClicked() {
     }
 
     // fetch corresponding file
-    QString filePath = QString(":/results/data/F_%1/span_%2/%3/field_%1_span_%2_complexity_%3.txt").arg(field).arg(span).arg(complexity);
+    QString filePath = QString(":/summary/data/F_%1/span_%2/%3/%3_summary.txt").arg(field).arg(span).arg(complexity);
     
-    int returnVal = getSequenceData(totaldbSeq, totalSmallSeq, filePath);
+    int returnVal = getSequenceData(totaldbSeq, totalSmallSeq, totalYielding, totalNonYielding, filePath);
     if (returnVal == ERR)
         return;
 
-    DataDisplayWindow* dataDisplayWindow = new DataDisplayWindow(this, field, span, complexity, totaldbSeq, totalSmallSeq);
+    DataDisplayWindow* dataDisplayWindow = new DataDisplayWindow(this, field, span, complexity, totaldbSeq, totalSmallSeq, totalYielding, totalNonYielding);
     dataDisplayWindow->setAttribute(Qt::WA_DeleteOnClose);
     dataDisplayWindow->show();
 }
 
-int MainWindow::getSequenceData(int& totaldbSeq, int& totalSmallSeq, QString filePath)
+int MainWindow::getSequenceData(int& totaldbSeq, int& totalSmallSeq, int& totalYielding, int& totalNonYielding, QString filePath)
 {
-    static QRegularExpression dbSeqRegex(R"(total number of sequences of complexity \d+ is: (\d+))");
-    static QRegularExpression smallSeqRegex(R"(number of subsequences with complexity \d+ is: (\d+))");
+    static QRegularExpression dbSeqRegex(R"(total number of debruijn sequences of complexity \d+ is: (\d+))");
+    static QRegularExpression smallSeqRegex(R"(total number of sequences of small complexity \d+ is: (\d+))");
+    static QRegularExpression yieldingSeqRegex(R"(The total number of sequences of small complexity=\d+ which yield debruijn sequences is: (\d+))");
+    static QRegularExpression nonYieldingSeqRegex(R"(The total number of sequences of small complexity=\d+ which DO NOT yield any debruijn sequences is: (\d+))");
+
 
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -179,6 +184,18 @@ int MainWindow::getSequenceData(int& totaldbSeq, int& totalSmallSeq, QString fil
         QRegularExpressionMatch smallSeqMatch = smallSeqRegex.match(line);
         if (smallSeqMatch.hasMatch()) {
             totalSmallSeq = smallSeqMatch.captured(1).toInt();
+        }
+
+        // Check for yielding line
+        QRegularExpressionMatch yieldingSeqMatch = yieldingSeqRegex.match(line);
+        if (yieldingSeqMatch.hasMatch()) {
+            totalYielding = yieldingSeqMatch.captured(1).toInt();
+        }
+
+        // Check for non yielding line
+        QRegularExpressionMatch nonYieldingSeqMatch = nonYieldingSeqRegex.match(line);
+        if (nonYieldingSeqMatch.hasMatch()) {
+            totalNonYielding = nonYieldingSeqMatch.captured(1).toInt();
         }
     }
 

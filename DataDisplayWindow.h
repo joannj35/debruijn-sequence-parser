@@ -21,7 +21,7 @@ class DataDisplayWindow : public BaseClass
 {
 
 public:
-    explicit DataDisplayWindow(QWidget* parent, int field, int span, int complexity, int totaldbSeq, int totalSmallSeq);
+    explicit DataDisplayWindow(QWidget* parent, int field, int span, int complexity, int totaldbSeq, int totalSmallSeq, int totalYielding, int totalNonYielding);
 
 private:
     int field;
@@ -29,10 +29,13 @@ private:
     int complexity;
     int totalSmallSeq;
     int totaldbSeq;
+    int totalYielding;
+    int totalNonYielding;
+
     QTextEdit* smallSequenceInput;
     QPushButton* inspectButton;
-    QCheckBox* filterZerosCheckbox;
-    QCheckBox* filterNoneZerosCheckbox;
+    QCheckBox* yieldingCheckbox;
+    QCheckBox* NonYieldingCheckbox;
     QCheckBox* filterSmallSeqCheckbox;
     QCheckBox* noFilterCheckbox;
     QGroupBox* filtersGroupBox;

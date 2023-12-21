@@ -25,7 +25,7 @@ private:
     QComboBox* complexityComboBox;
 
     void createFormGroupBox();
-    int getSequenceData(int& totaldbSeq, int& totalSmallSeq, QString filePath);
+    int getSequenceData(int& totaldbSeq, int& totalSmallSeq, int& totalYielding, int& totalNonYielding, QString filePath);
 
 private slots:
     void onSpanChanged(int index);
