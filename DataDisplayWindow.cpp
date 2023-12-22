@@ -258,10 +258,23 @@ void DataDisplayWindow::onInspectButtonClicked()
 		QMessageBox::warning(this, tr("Error"), tr("Cannot open file for reading."));
 		return;
 	}
+	
+	// inspection output file
+	QString saveFilePath = QFileDialog::getSaveFileName(
+		this,
+		tr("Save File"),
+		QStandardPaths::writableLocation(QStandardPaths::DesktopLocation),
+		tr("Text Files (*.txt)")
+	);
+	
+	if (saveFilePath.isEmpty()) {
+		QMessageBox::information(this, tr("Cancelled"), tr("File save cancelled."));
+		return;
+	}
 
-	QFile fileOut("inspectionOutput.txt");
-	if (!fileOut.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		QMessageBox::warning(this, tr("Error"), tr("Cannot create or open inspectionOutput file for writing."));
+	QFile fileOut(saveFilePath);
+	if (!fileOut.open(QIODevice::ReadWrite | QIODevice::Text)) {
+		QMessageBox::warning(this, tr("Error"), tr("Cannot create or open file for writing."));
 		return;
 	}
 
@@ -304,5 +317,5 @@ void DataDisplayWindow::onInspectButtonClicked()
 
 	fileOut.close();
 	QMessageBox::information(this, tr("Success"), tr("Inspection complete. Click OK to open the inspection result file."));
-	QDesktopServices::openUrl(QUrl::fromLocalFile(QDir::currentPath() + "/inspectionOutput.txt"));
+	QDesktopServices::openUrl(QUrl::fromLocalFile(saveFilePath));
 }

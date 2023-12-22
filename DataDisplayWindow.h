@@ -16,6 +16,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QRegularExpressionValidator>
+#include <QStandardPaths>
 
 class DataDisplayWindow : public BaseClass
 {
