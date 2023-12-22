@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/images">
-        <file>logo.png</file>
+        <file>logo/logo.png</file>
     </qresource>
     <qresource prefix="/results">
         <file>data/F_2/span_7/71/field_2_span_7_complexity_71.txt</file>
