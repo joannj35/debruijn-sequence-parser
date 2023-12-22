@@ -1,4 +1,5 @@
 total number of sequences of small complexity 16 is: 2048
 total number of debruijn sequences of complexity 48 is: 2772
-The total number of sequences of small complexity=48 which yield debruijn sequences is: 566
-The total number of sequences of small complexity=48 which DO NOT yield any debruijn sequences is: 1482
+The total number of sequences of small complexity=16 which yield debruijn sequences is: 566
+The total number of sequences of small complexity=16 which DO NOT yield any debruijn sequences is: 1482
+

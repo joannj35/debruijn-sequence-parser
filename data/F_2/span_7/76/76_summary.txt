@@ -1,4 +1,5 @@
 total number of sequences of small complexity 12 is: 128
 total number of debruijn sequences of complexity 76 is: 1232
-The total number of sequences of small complexity=76 which yield debruijn sequences is: 30
-The total number of sequences of small complexity=76 which DO NOT yield any debruijn sequences is: 98
+The total number of sequences of small complexity=12 which yield debruijn sequences is: 30
+The total number of sequences of small complexity=12 which DO NOT yield any debruijn sequences is: 98
+

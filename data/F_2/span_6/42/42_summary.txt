@@ -1,4 +1,5 @@
 total number of sequences of small complexity 10 is: 32
 total number of debruijn sequences of complexity 42 is: 160
-The total number of sequences of small complexity=42 which yield debruijn sequences is: 5
-The total number of sequences of small complexity=42 which DO NOT yield any debruijn sequences is: 27
+The total number of sequences of small complexity=10 which yield debruijn sequences is: 5
+The total number of sequences of small complexity=10 which DO NOT yield any debruijn sequences is: 27
+

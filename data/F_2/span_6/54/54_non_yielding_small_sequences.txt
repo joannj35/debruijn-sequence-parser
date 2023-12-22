@@ -1,4 +1,4 @@
-Summary of sequences of small complexity=54 which DO NOT yield debruijn sequences:
+Summary of sequences of small complexity=22 which DO NOT yield debruijn sequences:
 Total number of sequences in this file: 43390
 00000000000000000000010100000101
 11000000000000000000011011000110
@@ -43390,3 +43390,4 @@ Total number of sequences in this file: 43390
 10111101101111011011011110110111
 10111101111101111011011111111101
 11111101111111011111011111110111
+
