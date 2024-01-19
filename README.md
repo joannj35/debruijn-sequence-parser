@@ -25,21 +25,15 @@ data/
 |           └── ...
 ├── non_binary_field_3/
 │   └── span_2/
-│       ├── complexity_7/
-|       |   └── ...
-│       └── complexity_8/
+│       └── complexities_7-8/
 |           └── ...
 ├── non_binary_field_5/
 │   └── span_2/
-│       ├── complexity_11/
-|       |   └── ...
-│       └── complexity_12/
+│       └── complexities_11-15/
 |           └── ...
 ├── non_binary_field_7/
 │   └── span_2/
-│       ├── complexity_15/
-|       |   └── ...
-│       └── complexity_16/
+│       └── complexities_15-21/
 |           └── ...
 ```
 
