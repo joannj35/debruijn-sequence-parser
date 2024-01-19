@@ -1,0 +1,4 @@
+total number of sequences of small complexity 1 is: 6
+total number of debruijn sequences of complexity 15 is: 2268
+The total number of sequences of small complexity=1 which yield debruijn sequences is: 6
+The total number of sequences of small complexity=1 which DO NOT yield any debruijn sequences is: 0
