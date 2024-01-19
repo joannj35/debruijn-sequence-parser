@@ -39,6 +39,20 @@
         <file>data/F_2/span_6/54/field_2_span_6_complexity_54.txt</file>
         <file>data/F_2/span_6/55/field_2_span_6_complexity_55.txt</file>
         <file>data/F_2/span_6/56/field_2_span_6_complexity_56.txt</file>
+        <file>data/F_2/span_7/88/field_2_span_7_complexity_88.txt</file>
+        <file>data/F_3/span_2/7/field_3_span_2_complexity_7.txt</file>
+        <file>data/F_3/span_2/8/field_3_span_2_complexity_8.txt</file>
+        <file>data/F_5/span_2/11/field_5_span_2_complexity_11.txt</file>
+        <file>data/F_5/span_2/13/field_5_span_2_complexity_13.txt</file>
+        <file>data/F_5/span_2/14/field_5_span_2_complexity_14.txt</file>
+        <file>data/F_5/span_2/15/field_5_span_2_complexity_15.txt</file>
+        <file>data/F_7/span_2/15/field_7_span_2_complexity_15.txt</file>
+        <file>data/F_7/span_2/16/field_7_span_2_complexity_16.txt</file>
+        <file>data/F_7/span_2/17/field_7_span_2_complexity_17.txt</file>
+        <file>data/F_7/span_2/18/field_7_span_2_complexity_18.txt</file>
+        <file>data/F_7/span_2/19/field_7_span_2_complexity_19.txt</file>
+        <file>data/F_7/span_2/20/field_7_span_2_complexity_20.txt</file>
+        <file>data/F_5/span_2/12/field_5_span_2_complexity_12.txt</file>
     </qresource>
     <qresource prefix="/binarySmallSequences">
         <file>data/F_2/smallSequences/sequences_of_complexity_6.txt</file>
@@ -98,5 +112,19 @@
         <file>data/F_2/span_7/85/85_summary.txt</file>
         <file>data/F_2/span_7/86/86_summary.txt</file>
         <file>data/F_2/span_7/87/87_summary.txt</file>
+        <file>data/F_2/span_7/88/88_summary.txt</file>
+        <file>data/F_3/span_2/7/7_summary.txt</file>
+        <file>data/F_3/span_2/8/8_summary.txt</file>
+        <file>data/F_5/span_2/11/11_summary.txt</file>
+        <file>data/F_5/span_2/12/12_summary.txt</file>
+        <file>data/F_5/span_2/13/13_summary.txt</file>
+        <file>data/F_5/span_2/14/14_summary.txt</file>
+        <file>data/F_5/span_2/15/15_summary.txt</file>
+        <file>data/F_7/span_2/15/15_summary.txt</file>
+        <file>data/F_7/span_2/16/16_summary.txt</file>
+        <file>data/F_7/span_2/17/17_summary.txt</file>
+        <file>data/F_7/span_2/18/18_summary.txt</file>
+        <file>data/F_7/span_2/19/19_summary.txt</file>
+        <file>data/F_7/span_2/20/20_summary.txt</file>
     </qresource>
 </RCC>
