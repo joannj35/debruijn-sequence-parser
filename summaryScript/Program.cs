@@ -11,7 +11,12 @@ namespace parserExtentions
 
         static void Main(string[] args)
         {
-            directoryPath = Path.Combine(args[0]);
+            Console.WriteLine("Enter the head direcotry which includes all the input files (data folder)");
+            var dataDirectory = Console.ReadLine();
+            if (dataDirectory == null)
+                return;
+
+            directoryPath = Path.Combine(dataDirectory);
             try
             {
                 var files = Directory.EnumerateFiles(directoryPath, pattern, SearchOption.AllDirectories);
@@ -28,11 +33,11 @@ namespace parserExtentions
         static void ProcessFile(string filePath)
         {
             string ComplexityDirPath = Path.GetDirectoryName(filePath) ?? throw new Exception($"Path directory returned null"); // complexity direcotry path
+            string spanDirPath = Path.GetDirectoryName(ComplexityDirPath) ?? throw new Exception($"Path directory returned null"); // span direcotry path
             string fileContent = File.ReadAllText(filePath);
             string pattern = @"(total number of sequences of small complexity \d+ is: \d+|total number of debruijn sequences of complexity \d+ is: \d+)";
-            string spanDirPath = Path.GetDirectoryName(ComplexityDirPath) ?? throw new Exception($"Path directory returned null"); // complexity direcotry path
-            int span = int.Parse(spanDirPath.Split('_')[1]); //assuming directories are like: F_%/span_%/%
             
+            GetValueBasedOnRegex(spanDirPath, @"span_(\d+)", out int span); //assuming directories are like: F_%/span_%/%
             GetValueBasedOnRegex(fileContent, @"complexity (\d+):", out int complexity);
 
             // output file paths
