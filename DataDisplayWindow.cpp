@@ -176,7 +176,7 @@ void DataDisplayWindow::onOpenFileClicked()
 	bool isNoFilterChecked = noFilterCheckbox->isChecked();
 	bool NonYieldingChecked = NonYieldingCheckbox->isChecked();
 	bool yieldingChecked = yieldingCheckbox->isChecked();
-	bool isFilterSmallSeqChecked = filterSmallSeqCheckbox->isChecked();
+	bool smallSeqChecked = filterSmallSeqCheckbox->isChecked();
 	QString fileName = "";
 
 	if (isNoFilterChecked) {
@@ -197,7 +197,7 @@ void DataDisplayWindow::onOpenFileClicked()
 		yieldingCheckbox->setCheckState(Qt::Unchecked);
 	}
 
-	if (isFilterSmallSeqChecked) {
+	if (smallSeqChecked) {
 		int offset;
 
 		if (field == 2) 
@@ -206,7 +206,7 @@ void DataDisplayWindow::onOpenFileClicked()
 			offset = complexity - 2 * field;
 
 		//open file
-		fileName = QString("/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
+		fileName = QString(":/smallSequences/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
 		openFileForUser(fileName);
 		filterSmallSeqCheckbox->setCheckState(Qt::Unchecked);
 	}

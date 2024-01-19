@@ -54,7 +54,7 @@
         <file>data/F_7/span_2/20/field_7_span_2_complexity_20.txt</file>
         <file>data/F_5/span_2/12/field_5_span_2_complexity_12.txt</file>
     </qresource>
-    <qresource prefix="/binarySmallSequences">
+    <qresource prefix="/smallSequences">
         <file>data/F_2/smallSequences/sequences_of_complexity_6.txt</file>
         <file>data/F_2/smallSequences/sequences_of_complexity_7.txt</file>
         <file>data/F_2/smallSequences/sequences_of_complexity_8.txt</file>
@@ -74,6 +74,18 @@
         <file>data/F_2/smallSequences/sequences_of_complexity_22.txt</file>
         <file>data/F_2/smallSequences/sequences_of_complexity_23.txt</file>
         <file>data/F_2/smallSequences/sequences_of_complexity_24.txt</file>
+        <file>data/F_3/smallSequences/sequences_of_complexity_1.txt</file>
+        <file>data/F_3/smallSequences/sequences_of_complexity_2.txt</file>
+        <file>data/F_5/smallSequences/sequences_of_complexity_1.txt</file>
+        <file>data/F_5/smallSequences/sequences_of_complexity_2.txt</file>
+        <file>data/F_5/smallSequences/sequences_of_complexity_3.txt</file>
+        <file>data/F_5/smallSequences/sequences_of_complexity_4.txt</file>
+        <file>data/F_5/smallSequences/sequences_of_complexity_5.txt</file>
+        <file>data/F_7/smallSequences/sequences_of_complexity_1.txt</file>
+        <file>data/F_7/smallSequences/sequences_of_complexity_2.txt</file>
+        <file>data/F_7/smallSequences/sequences_of_complexity_3.txt</file>
+        <file>data/F_7/smallSequences/sequences_of_complexity_4.txt</file>
+        <file>data/F_7/smallSequences/sequences_of_complexity_5.txt</file>
     </qresource>
     <qresource prefix="/summary">
         <file>data/F_2/span_6/38/38_summary.txt</file>
