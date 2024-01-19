@@ -1,6 +1,7 @@
 # Debruijn Sequence Parser
 [![License](https://img.shields.io/badge/license-Apache_2.0-green)](https://github.com/joannj35/debruijn-sequence-parser/blob/main/LICENSE)
 [![tool](https://img.shields.io/badge/source_code-computational_tool-8A2BE2)](https://github.com/joannj35/debruijn-sequence-complexity-distribution)
+[![data](https://img.shields.io/badge/data-overview-blue)](https://github.com/joannj35/debruijn-sequence-parser/blob/master/data/README.md)
 
 ## Overview
 In this project we continue the study of the linear complexity of de Bruijn sequences over finite fields. Our aim is to establish the integer values of
