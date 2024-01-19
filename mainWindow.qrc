@@ -87,6 +87,7 @@
         <file>data/F_7/smallSequences/sequences_of_complexity_4.txt</file>
         <file>data/F_7/smallSequences/sequences_of_complexity_5.txt</file>
         <file>data/F_7/smallSequences/sequences_of_complexity_6.txt</file>
+        <file>data/F_7/smallSequences/sequences_of_complexity_7.txt</file>
     </qresource>
     <qresource prefix="/summary">
         <file>data/F_2/span_6/38/38_summary.txt</file>
