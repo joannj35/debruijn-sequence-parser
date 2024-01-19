@@ -186,37 +186,29 @@ void DataDisplayWindow::onOpenFileClicked()
 	}
 
 	if (NonYieldingChecked) {
-		if (field != 2)
-			QMessageBox::information(this, tr(""), tr("This action is applicable for binary fields only"));
-		else
-		{
-			fileName = QString("/data/F_%1/span_%2/%3/%3_non_yielding_small_sequences.txt").arg(field).arg(span).arg(complexity);
-			openFileForUser(fileName);
-			NonYieldingCheckbox->setCheckState(Qt::Unchecked);
-		}
+		fileName = QString("/data/F_%1/span_%2/%3/%3_non_yielding_small_sequences.txt").arg(field).arg(span).arg(complexity);
+		openFileForUser(fileName);
+		NonYieldingCheckbox->setCheckState(Qt::Unchecked);
 	}
 
 	if (yieldingChecked) {
-		if (field != 2)
-			QMessageBox::information(this, tr(""), tr("This action is applicable for binary fields only"));
-		else
-		{
-			fileName = QString("/data/F_%1/span_%2/%3/%3_yielding_small_sequences.txt").arg(field).arg(span).arg(complexity);
-			openFileForUser(fileName);
-			yieldingCheckbox->setCheckState(Qt::Unchecked);
-		}
+		fileName = QString("/data/F_%1/span_%2/%3/%3_yielding_small_sequences.txt").arg(field).arg(span).arg(complexity);
+		openFileForUser(fileName);
+		yieldingCheckbox->setCheckState(Qt::Unchecked);
 	}
 
 	if (isFilterSmallSeqChecked) {
-		if (field != 2)
-			QMessageBox::information(this, tr(""), tr("This action is applicable for binary fields only"));
+		int offset;
+
+		if (field == 2) 
+			offset = complexity - qPow(field, span - 1);
 		else
-		{
-			int offset = complexity - qPow(field, span - 1);
-			fileName = QString("/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
-			openFileForUser(fileName);
-			filterSmallSeqCheckbox->setCheckState(Qt::Unchecked);
-		}
+			offset = complexity - 2 * field;
+
+		//open file
+		fileName = QString("/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
+		openFileForUser(fileName);
+		filterSmallSeqCheckbox->setCheckState(Qt::Unchecked);
 	}
 }
 
