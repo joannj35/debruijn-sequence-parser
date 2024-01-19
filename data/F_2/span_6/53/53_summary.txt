@@ -1,4 +1,4 @@
 total number of sequences of small complexity 21 is: 32768
+total number of debruijn sequences of complexity 53 is: 34224
 The total number of sequences of small complexity=21 which yield debruijn sequences is: 11028
 The total number of sequences of small complexity=21 which DO NOT yield any debruijn sequences is: 21740
-
