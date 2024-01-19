@@ -33,12 +33,12 @@ namespace parserExtentions
         static void ProcessFile(string filePath)
         {
             string ComplexityDirPath = Path.GetDirectoryName(filePath) ?? throw new Exception($"Path directory returned null"); // complexity direcotry path
-            string spanDirPath = Path.GetDirectoryName(ComplexityDirPath) ?? throw new Exception($"Path directory returned null"); // span direcotry path
             string fileContent = File.ReadAllText(filePath);
             string pattern = @"(total number of sequences of small complexity \d+ is: \d+|total number of debruijn sequences of complexity \d+ is: \d+)";
-            
-            GetValueBasedOnRegex(spanDirPath, @"span_(\d+)", out int span); //assuming directories are like: F_%/span_%/%
-            GetValueBasedOnRegex(fileContent, @"complexity (\d+):", out int complexity);
+
+            GetValueBasedOnRegex(ComplexityDirPath, @"F_(\d+)", out int field); //assuming directories are like: F_%/span_%/%
+            GetValueBasedOnRegex(ComplexityDirPath, @"span_(\d+)", out int span); //assuming directories are like: F_%/span_%/%
+            GetValueBasedOnRegex(fileContent, @"complexity (\d+)\s*:", out int complexity);
 
             // output file paths
             string yieldingFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_yielding_small_sequences.txt");
@@ -62,16 +62,18 @@ namespace parserExtentions
                         summaryWriter.WriteLine(match.Value);
 
                     GetSmallSeq(fileContent, out List<string> yieldDb, out List<string> nonYieldDb);
+                    
+                    var smallComplexity = field == 2 ? (complexity - Math.Pow(field, span - 1)) : (complexity - 2 * field);
 
-                    summaryWriter.WriteLine($"The total number of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which yield debruijn sequences is: {yieldDb.Count}\n"
-                                  + $"The total number of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
+                    summaryWriter.WriteLine($"The total number of sequences of small complexity={smallComplexity} which yield debruijn sequences is: {yieldDb.Count}\n"
+                                  + $"The total number of sequences of small complexity={smallComplexity} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
 
-                    nonZeroWriter.WriteLine($"Summary of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which yield debruijn sequences:\n"
+                    nonZeroWriter.WriteLine($"Summary of sequences of small complexity={smallComplexity} which yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {yieldDb.Count}");
                     foreach (var seq in yieldDb)
                         nonZeroWriter.WriteLine($"{seq}");
 
-                    zeroWriter.WriteLine($"Summary of sequences of small complexity={complexity - Math.Pow(2, span - 1)} which DO NOT yield debruijn sequences:\n"
+                    zeroWriter.WriteLine($"Summary of sequences of small complexity={smallComplexity} which DO NOT yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {nonYieldDb.Count}");
                     foreach (var seq in nonYieldDb)
                         zeroWriter.WriteLine($"{seq}");
@@ -92,12 +94,12 @@ namespace parserExtentions
         }
 
         /// <summary> extracts an integer value based on a regex pattern. </summary>
-        /// <param name="fileContent"> file content to extract values from</param>
+        /// <param name="search"> content to extract values from</param>
         /// <param name="pattern"> regex pattern to match </param>
         /// <param name="value"> out value variable </param>
-        static void GetValueBasedOnRegex(string fileContent, string pattern, out int value)
+        static void GetValueBasedOnRegex(string search, string pattern, out int value)
         {
-            var match = Regex.Match(fileContent, pattern);
+            var match = Regex.Match(search, pattern);
             value = match.Success ? int.Parse(match.Groups[1].Value) : -1;
         }
 
