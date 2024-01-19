@@ -60,7 +60,7 @@ namespace parserExtentions
                 {
                     foreach (Match match in Regex.Matches(fileContent, pattern))
                         summaryWriter.WriteLine(match.Value);
-
+                    
                     GetSmallSeq(fileContent, out List<string> yieldDb, out List<string> nonYieldDb);
                     
                     var smallComplexity = field == 2 ? (complexity - Math.Pow(field, span - 1)) : (complexity - 2 * field);

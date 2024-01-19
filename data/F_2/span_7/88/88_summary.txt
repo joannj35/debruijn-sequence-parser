@@ -1,0 +1,4 @@
+total number of sequences of small complexity 24 is: 262144
+total number of debruijn sequences of complexity 88 is: 343412
+The total number of sequences of small complexity=24 which yield debruijn sequences is: 78662
+The total number of sequences of small complexity=24 which DO NOT yield any debruijn sequences is: 183482
