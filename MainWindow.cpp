@@ -111,14 +111,14 @@ void MainWindow::onSpanChanged(int index) {
     }
 }
 
-//in the case of non-bianry field p: span is only 2 and complexities are 2p+1 , 2p+2
+//in the case of non-bianry field p: span is only 2 and complexities are 2p+i where is i in{1,..p-1}
 //in the case of binary field: span is 6 or 7 and complexities are p^(span-1)
 void MainWindow::populateComplexityComboBox(int span, int p) {
     if (span == 2) // non binary
     {
         complexityComboBox->addItem("<select>", QVariant(0));
-        complexityComboBox->addItem(QString::number(2 * p + 1), QVariant(2 * p + 1));
-        complexityComboBox->addItem(QString::number(2 * p + 2), QVariant(2 * p + 2));
+        for (int i = 1; i <= p; ++i)
+            complexityComboBox->addItem(QString::number(2*p + i), QVariant(2*p + i));
         return;
     }
 
@@ -140,7 +140,7 @@ void MainWindow::onNextButtonClicked() {
 
     // Check if any of the values is the placeholder '<select>'
     if (field == 0 || span == 0 || complexity == 0) {
-        QMessageBox::warning(this, tr("Incomplete Selection Detected"), tr("All fields must be selected prior to proceeding."));
+        QMessageBox::warning(this, tr("Incomplete Selection Detected"), tr("All fields must be selected before proceeding."));
         return;
     }
 
