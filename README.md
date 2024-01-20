@@ -16,6 +16,7 @@ data/
 ├── binary_field/
 │   ├── sequences_of_small_complexity/   # sequences of which we generate the larger debruijn sequences
 │   |   └── complexities_6-24/
+|   |
 │   ├── span_7/
 │   |    └── complexities_71-88/
 |   |       ├── summary_file
@@ -24,14 +25,17 @@ data/
 │   └── span_6/
 │       └── complexities_38-56/
 |           └── ...
+|
 ├── non_binary_field_3/
 │   └── span_2/
 │       └── complexities_7-8/
 |           └── ...
+|
 ├── non_binary_field_5/
 │   └── span_2/
 │       └── complexities_11-15/
 |           └── ...
+|
 ├── non_binary_field_7/
 │   └── span_2/
 │       └── complexities_15-21/
