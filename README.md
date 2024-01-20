@@ -14,29 +14,42 @@ The tool is preloaded with a diverse set of data for analyzing de Bruijn sequenc
 ```
 data/
 ├── binary_field/
-│   ├── sequences_of_small_complexity/   # sequences of which we generate the larger debruijn sequences
+│   ├── sequences_of_small_complexity/   # sequences of which we generate the larger debruijn sequences from
 │   |   └── complexities_6-24/
+|   |       └── ...
 |   |
-│   ├── span_7/
-│   |    └── complexities_71-88/
-|   |       ├── summary_file
+│   ├── span_6/
+│   |   └── complexities_38-56/
+|   |       ├── field_*_span_*_complexity_*  # output file of the computation tool
+|   |       ├── summary_file                 # overview file for a specific complexity
 |   |       ├── non_yielding_small_sequences # sequences of small complexity which DONT yield debruijn sequences
 |   |       └── yielding_small_sequences     # sequences of small complexity which yield debruijn sequences
-│   └── span_6/
-│       └── complexities_38-56/
+|   |
+|   └── span_7/
+│       └── complexities_71-88/
 |           └── ...
 |
 ├── non_binary_field_3/
+│   ├── sequences_of_small_complexity/ 
+│   |   └── complexities_1-2/
+|   |
 │   └── span_2/
 │       └── complexities_7-8/
 |           └── ...
 |
 ├── non_binary_field_5/
+│   ├── sequences_of_small_complexity/ 
+│   |   └── complexities_1-5/
+|   |
 │   └── span_2/
 │       └── complexities_11-15/
 |           └── ...
 |
 ├── non_binary_field_7/
+│   ├── sequences_of_small_complexity/ 
+│   |   └── complexities_1-7/
+|   |       └── ...
+|   |
 │   └── span_2/
 │       └── complexities_15-21/
 |           └── ...
