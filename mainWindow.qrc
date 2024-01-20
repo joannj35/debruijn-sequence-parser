@@ -53,6 +53,7 @@
         <file>data/F_7/span_2/19/field_7_span_2_complexity_19.txt</file>
         <file>data/F_7/span_2/20/field_7_span_2_complexity_20.txt</file>
         <file>data/F_5/span_2/12/field_5_span_2_complexity_12.txt</file>
+        <file>data/F_7/span_2/21/field_7_span_2_complexity_21.txt</file>
     </qresource>
     <qresource prefix="/smallSequences">
         <file>data/F_2/smallSequences/sequences_of_complexity_6.txt</file>
@@ -140,5 +141,6 @@
         <file>data/F_7/span_2/18/18_summary.txt</file>
         <file>data/F_7/span_2/19/19_summary.txt</file>
         <file>data/F_7/span_2/20/20_summary.txt</file>
+        <file>data/F_7/span_2/21/21_summary.txt</file>
     </qresource>
 </RCC>
