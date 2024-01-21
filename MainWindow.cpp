@@ -114,7 +114,7 @@ void MainWindow::onSpanChanged(int index) {
 //in the case of non-bianry field p: span is only 2 and complexities are 2p+i where is i in{1,..p-1}
 //in the case of binary field: span is 6 or 7 and complexities are p^(span-1)
 void MainWindow::populateComplexityComboBox(int span, int p) {
-    if (span == 2) // non binary
+    if (p != 2) // non binary
     {
         complexityComboBox->addItem("<select>", QVariant(0));
         for (int i = 1; i <= p; ++i)
@@ -123,9 +123,8 @@ void MainWindow::populateComplexityComboBox(int span, int p) {
     }
 
     //binary
-    int i = qPow(p, span - 1) + span;
     complexityComboBox->addItem("<select>", QVariant(0));
-    for (; i <= qPow(p, span) - 1; ++i)
+    for (int i = qPow(p, span - 1) + span; i <= qPow(p, span - 1) + 24; ++i) // i <= qPow(p, span) - 1 for all possible complexities
         complexityComboBox->addItem(QString::number(i), QVariant(i));
 }
 
