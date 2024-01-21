@@ -58,7 +58,7 @@ void DataDisplayWindow::createResultsGroupBox()
 
 	// LABELS
 	QLabel* labelTotalDbSeq = new QLabel(tr("Total number of de-Bruijn sequences is: %1").arg(totaldbSeq));
-	QLabel* labelTotalSmallSeq = new QLabel(tr("Total number of small sequences is: %1").arg(totalSmallSeq));
+	QLabel* labelTotalSmallSeq = new QLabel(tr("Total number of sequences of small complexity is: %1").arg(totalSmallSeq));
 	QLabel* labelTotalYielding = new QLabel(tr("Total number of sequences of small complexity which yielded debruijn sequences is : %1").arg(totalYielding));
 	QLabel* labelTotalNonYielding = new QLabel(tr("Total number of sequences of small complexity which DIDN'T yield debruijn sequences is : %1").arg(totalNonYielding));
 
@@ -206,7 +206,7 @@ void DataDisplayWindow::onOpenFileClicked()
 			offset = complexity - 2 * field;
 
 		//open file
-		fileName = QString(":/smallSequences/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
+		fileName = QString("/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
 		openFileForUser(fileName);
 		filterSmallSeqCheckbox->setCheckState(Qt::Unchecked);
 	}
