@@ -63,7 +63,7 @@ namespace parserExtentions
                     
                     GetSmallSeq(fileContent, out List<string> yieldDb, out List<string> nonYieldDb);
                     
-                    var smallComplexity = field == 2 ? (complexity - Math.Pow(field, span - 1)) : (complexity - 2 * field);
+                    var smallComplexity = field == 2 ? (complexity - Math.Pow(field, span - 1)) : (complexity % field);
 
                     summaryWriter.WriteLine($"The total number of sequences of small complexity={smallComplexity} which yield debruijn sequences is: {yieldDb.Count}\n"
                                   + $"The total number of sequences of small complexity={smallComplexity} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
