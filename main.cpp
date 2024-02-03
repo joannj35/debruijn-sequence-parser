@@ -17,6 +17,7 @@ int main(int argc, char* argv[]) {
         "  font-weight: bold; "
         "  border: none; "
         "  padding: 5px 15px; "
+        "  font-size: 13px; "
         "} "
 
         "QPushButton:hover { "
