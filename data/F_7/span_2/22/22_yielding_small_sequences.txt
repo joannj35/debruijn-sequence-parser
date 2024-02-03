@@ -1,8 +1,0 @@
-Summary of sequences of small complexity=8 which yield debruijn sequences:
-Total number of sequences in this file: 6
-4444444
-5555555
-2222222
-6666666
-3333333
-1111111
