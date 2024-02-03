@@ -1,0 +1,4 @@
+total number of sequences of small complexity 3 is: 294
+total number of debruijn sequences of complexity 24 is: 316344
+The total number of sequences of small complexity=10 which yield debruijn sequences is: 294
+The total number of sequences of small complexity=10 which DO NOT yield any debruijn sequences is: 0
