@@ -18,10 +18,16 @@ MainWindow::MainWindow(QWidget* parent)
     connect(spanComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onSpanChanged(int)));
     formGroupBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
+    // summary overview group box
+    createSummaryGroupBox();
+    summaryGroupBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
     // button box
     leftButton->setText(tr("Next"));
+    openExcelButton->setToolTip(tr("Click to proceed to the next page"));
     connect(leftButton, &QPushButton::clicked, this, &MainWindow::onNextButtonClicked);
-    rightButton->setText(tr("Close"));
+    rightButton->setText(tr("Exit"));
+    openExcelButton->setToolTip(tr("Click to quit the application"));
     connect(rightButton, &QPushButton::clicked, this, &MainWindow::reject);
     buttonBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
@@ -29,6 +35,8 @@ MainWindow::MainWindow(QWidget* parent)
     mainLayout->addWidget(topLabel);
     mainLayout->addSpacing(20);
     mainLayout->addWidget(formGroupBox);
+    mainLayout->addSpacing(30);
+    mainLayout->addWidget(summaryGroupBox);
     mainLayout->addSpacing(30);
     mainLayout->addWidget(buttonBox);
 
@@ -52,7 +60,7 @@ void MainWindow::createFormGroupBox()
     // LABEL FONT
     QFont groupBoxFont = formGroupBox->font();
     groupBoxFont.setPointSize(11);
-    formGroupBox->setFont(groupBoxFont); // group boxs title
+    formGroupBox->setFont(groupBoxFont); // group box title
     orderLabel->setFont(groupBoxFont);
     spanLabel->setFont(groupBoxFont);
     complexityLabel->setFont(groupBoxFont);
@@ -74,9 +82,38 @@ void MainWindow::createFormGroupBox()
     formGroupBox->setLayout(layout);
 }
 
+void MainWindow::createSummaryGroupBox()
+{
+    QFormLayout* layout = new QFormLayout;
+    summaryGroupBox = new QGroupBox(tr("Data Overview"));
+
+    // LABEL 
+    QLabel* label = new QLabel(tr("A summary Excel sheet, which provides a comprehensive overview of the resulting data"));
+
+    // LABEL FONT
+    QFont groupBoxFont = summaryGroupBox->font();
+    groupBoxFont.setPointSize(11);
+    summaryGroupBox->setFont(groupBoxFont); // group box title
+    label->setFont(groupBoxFont);
+
+    //BUTTON BOX
+    summarybuttonBox = new QDialogButtonBox(this);
+    openExcelButton = new QPushButton(tr("Open File"));
+    openExcelButton->setToolTip(tr("Click to open the summary Excel sheet"));
+    connect(openExcelButton, &QPushButton::clicked, this, &MainWindow::onOpenExcelButtonClicked);
+    summarybuttonBox->addButton(openExcelButton, QDialogButtonBox::NoRole);
+    summarybuttonBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    // LAYOUT
+    layout->addRow(label);
+    layout->addRow(summarybuttonBox);
+    summaryGroupBox->setLayout(layout);
+}
+
 void MainWindow::onFieldChanged(int index) {
     spanComboBox->clear();
     complexityComboBox->clear();
+
     if (index != -1) {
 
         if (fieldComboBox->itemText(index) == "<select>")
@@ -111,19 +148,20 @@ void MainWindow::onSpanChanged(int index) {
     }
 }
 
-//in the case of non-bianry field p: span is only 2 and complexities are 2p+i where is i in{1,..p-1}
-//in the case of binary field: span is 6 or 7 and complexities are p^(span-1)
 void MainWindow::populateComplexityComboBox(int span, int p) {
+    complexityComboBox->addItem("<select>", QVariant(0));
+
     if (p != 2) // non binary
     {
-        complexityComboBox->addItem("<select>", QVariant(0));
-        for (int i = 1; i <= p; ++i)
-            complexityComboBox->addItem(QString::number(2*p + i), QVariant(2*p + i));
+        for (int i = 2*p + 1; i < qPow(p, span); ++i) {
+            if (p == 7 && i > 25) //for f7: support complexities up until 25
+                break;
+            complexityComboBox->addItem(QString::number(i), QVariant(i));
+        }
         return;
     }
 
     //binary
-    complexityComboBox->addItem("<select>", QVariant(0));
     for (int i = qPow(p, span - 1) + span; i <= qPow(p, span - 1) + 24; ++i) // i <= qPow(p, span) - 1 for all possible complexities
         complexityComboBox->addItem(QString::number(i), QVariant(i));
 }
@@ -154,6 +192,25 @@ void MainWindow::onNextButtonClicked() {
     dataDisplayWindow->setAttribute(Qt::WA_DeleteOnClose);
     dataDisplayWindow->show();
 }
+
+void MainWindow::onOpenExcelButtonClicked()
+{
+    
+    QString appDir = QCoreApplication::applicationDirPath();
+
+#ifdef _DEBUG // go up two directories from the Release/Debug folder
+    appDir = QDir(appDir).absoluteFilePath("../../");
+#endif
+
+    QString filePath = "data/summary.xlsx";
+    QString localFilePath = appDir + filePath; 
+    QUrl fileUrl = QUrl::fromLocalFile(localFilePath);
+
+    if (!QDesktopServices::openUrl(fileUrl)) {
+        QMessageBox::warning(this, tr("File Open Error"), tr("Unable to open file: ") + localFilePath);
+    }
+}
+
 
 int MainWindow::getSequenceData(int& totaldbSeq, int& totalSmallSeq, int& totalYielding, int& totalNonYielding, QString filePath)
 {
