@@ -42,6 +42,7 @@ private:
     QGroupBox* filtersGroupBox;
     QGroupBox* resultsGroupBox;
     QGroupBox* smallSeqInspectGroupBox;
+    QCheckBox* inspectSeparatelyCheckbox;
 
     void openFileForUser(const QString& filePath);
     void createResultsGroupBox();
