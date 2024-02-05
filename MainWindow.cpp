@@ -202,7 +202,7 @@ void MainWindow::onOpenExcelButtonClicked()
     appDir = QDir(appDir).absoluteFilePath("../../");
 #endif
 
-    QString filePath = "data/summary.xlsx";
+    QString filePath = "/data/summary.xlsx";
     QString localFilePath = appDir + filePath; 
     QUrl fileUrl = QUrl::fromLocalFile(localFilePath);
 
