@@ -1,0 +1,4 @@
+total number of sequences of small complexity 4 is: 500
+total number of debruijn sequences of complexity 19 is: 256360
+The total number of sequences of small complexity=4 which yield debruijn sequences is: 500
+The total number of sequences of small complexity=4 which DO NOT yield any debruijn sequences is: 0
