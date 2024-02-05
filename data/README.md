@@ -1,4 +1,4 @@
-![image](https://github.com/joannj35/debruijn-sequence-parser/assets/90503892/923dd0f2-6c8b-4651-b494-0b1d5196b377)# Data Overview
+# Data Overview
 
 |   Field |   Span |   Complexity | Total Number of Debruijn sequences | Sequences of small complexity | Yielding sequences | Non-Yielding sequences |
 |---------|--------|--------------|------------------------------------|-------------------------------|--------------------|------------------------|
