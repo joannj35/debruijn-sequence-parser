@@ -4,7 +4,7 @@ DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int c
 	: BaseClass(parent), field(field), span(span), complexity(complexity), totaldbSeq(totaldbSeq), totalSmallSeq(totalSmallSeq), totalYielding(totalYielding), totalNonYielding(totalNonYielding)
 {
 	// top label
-	std::string str = "De-Bruijn Sequences\n Over Field F" + std::to_string(field)
+	std::string str = "de-Bruijn Sequences\n Over Field F" + std::to_string(field)
 		+ " Span " + std::to_string(span)
 		+ " Complexity " + std::to_string(complexity);
 
@@ -28,7 +28,7 @@ DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int c
 	connect(inspectButton, &QPushButton::clicked, this, &DataDisplayWindow::onInspectButtonClicked);
 
 	// button box
-	leftButton->setText(tr("Open File"));
+	leftButton->setText(tr("Load Files"));
 	connect(leftButton, &QPushButton::clicked, this, &DataDisplayWindow::onOpenFileClicked);
 	rightButton->setText(tr("Close"));
 	connect(rightButton, &QPushButton::clicked, this, &DataDisplayWindow::reject);
@@ -42,7 +42,7 @@ DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int c
 	mainLayout->addWidget(filtersGroupBox);
 	mainLayout->addSpacing(5);
 	mainLayout->addWidget(smallSeqInspectGroupBox);
-	mainLayout->addSpacing(30);
+	mainLayout->addSpacing(20);
 	mainLayout->addWidget(buttonBox);
 
 	// main widget
@@ -54,13 +54,13 @@ DataDisplayWindow::DataDisplayWindow(QWidget* parent, int field, int span, int c
 void DataDisplayWindow::createResultsGroupBox()
 {
 	QFormLayout* resultsLayout = new QFormLayout;
-	resultsGroupBox = new QGroupBox(tr("Results"));
+	resultsGroupBox = new QGroupBox(tr("Results Overview"));
 
 	// LABELS
-	QLabel* labelTotalDbSeq = new QLabel(tr("Total number of de-Bruijn sequences is: %1").arg(totaldbSeq));
+	QLabel* labelTotalDbSeq = new QLabel(tr("Total number of de Bruijn sequences is: %1").arg(totaldbSeq));
 	QLabel* labelTotalSmallSeq = new QLabel(tr("Total number of sequences of small complexity is: %1").arg(totalSmallSeq));
-	QLabel* labelTotalYielding = new QLabel(tr("Total number of sequences of small complexity which yielded debruijn sequences is : %1").arg(totalYielding));
-	QLabel* labelTotalNonYielding = new QLabel(tr("Total number of sequences of small complexity which DIDN'T yield debruijn sequences is : %1").arg(totalNonYielding));
+	QLabel* labelTotalYielding = new QLabel(tr("Total number of sequences of small complexity which yielded de Bruijn sequences is : %1").arg(totalYielding));
+	QLabel* labelTotalNonYielding = new QLabel(tr("Total number of sequences of small complexity which DIDN'T yield de Bruijn sequences is : %1").arg(totalNonYielding));
 
 	// LABEL FONT
 	QFont groupBoxFont = resultsGroupBox->font();
@@ -86,17 +86,20 @@ void DataDisplayWindow::createFiltersGroupBox()
 	filtersGroupBox = new QGroupBox(tr("Filters"));
 
 	// CHECK BOXES
-	noFilterCheckbox = new QCheckBox(tr("No Filters Applied"), this);
-	noFilterCheckbox->setToolTip(tr("Check to open the original -unfiltered- file"));
+	noFilterCheckbox = new QCheckBox(tr("Original File"), this);
+	noFilterCheckbox->setToolTip(tr("Select to open the original file"));
 
 	yieldingCheckbox = new QCheckBox(tr("Yielding Sequences Only"), this);
-	yieldingCheckbox->setToolTip(tr("Check to show sequences of small complexity which yield any de-Bruijn sequences"));
+	yieldingCheckbox->setToolTip(tr("Select to show the small sequences & their yeilded de-Bruijn sequences"));
 
-	NonYieldingCheckbox = new QCheckBox(tr("Non-Yielding Sequences Only"), this);
-	NonYieldingCheckbox->setToolTip(tr("Check to show sequences of small complexity which do not yield de-Bruijn sequences"));
+	yieldingSmallCheckbox = new QCheckBox(tr("Yielding Small Sequences Only"), this);
+	yieldingSmallCheckbox->setToolTip(tr("Select to show sequences of small complexity which yield any de-Bruijn sequences"));
+
+	NonYieldingCheckbox = new QCheckBox(tr("Non-Yielding Small Sequences Only"), this);
+	NonYieldingCheckbox->setToolTip(tr("Select to show sequences of small complexity which do not yield de-Bruijn sequences"));
 
 	filterSmallSeqCheckbox = new QCheckBox(tr("Sequences Of Small Complexity Only"), this);
-	filterSmallSeqCheckbox->setToolTip(tr("Check to open the file containing the sequences of small complexity of which we generate the debruijn sequences"));
+	filterSmallSeqCheckbox->setToolTip(tr("Select to open the file containing the sequences of small complexity of which we generate the de-Bruijn sequences"));
 
 	// LABEL FONT
 	QFont groupBoxFont = filtersGroupBox->font();
@@ -209,7 +212,7 @@ void DataDisplayWindow::onOpenFileClicked()
 		if (field == 2) 
 			offset = complexity - qPow(field, span - 1);
 		else
-			offset = complexity - 2 * field;
+			offset = complexity % field;
 
 		//open file
 		fileName = QString("/data/F_%1/smallSequences/sequences_of_complexity_%2.txt").arg(field).arg(offset);
