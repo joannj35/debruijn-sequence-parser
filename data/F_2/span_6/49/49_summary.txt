@@ -2,4 +2,3 @@ total number of sequences of small complexity 17 is: 2048
 total number of debruijn sequences of complexity 49 is: 2352
 The total number of sequences of small complexity=17 which yield debruijn sequences is: 739
 The total number of sequences of small complexity=17 which DO NOT yield any debruijn sequences is: 1309
-

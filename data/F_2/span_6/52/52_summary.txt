@@ -2,4 +2,3 @@ total number of sequences of small complexity 20 is: 16384
 total number of debruijn sequences of complexity 52 is: 18096
 The total number of sequences of small complexity=20 which yield debruijn sequences is: 5526
 The total number of sequences of small complexity=20 which DO NOT yield any debruijn sequences is: 10858
-

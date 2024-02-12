@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget* parent)
     : BaseClass(parent)
 {
     // top label
-    topLabel->setText(tr("Debruijn Sequence Parser"));
+    topLabel->setText(tr("de Bruijn Sequence Parser"));
     QFont labelFont = topLabel->font();
     labelFont.setPointSize(30);
     labelFont.setBold(true);
@@ -34,10 +34,10 @@ MainWindow::MainWindow(QWidget* parent)
     // main layout
     mainLayout->addWidget(topLabel);
     mainLayout->addSpacing(20);
-    mainLayout->addWidget(formGroupBox);
-    mainLayout->addSpacing(30);
     mainLayout->addWidget(summaryGroupBox);
-    mainLayout->addSpacing(30);
+    mainLayout->addSpacing(5);
+    mainLayout->addWidget(formGroupBox);
+    mainLayout->addSpacing(10);
     mainLayout->addWidget(buttonBox);
 
     // main widget
@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget* parent)
 void MainWindow::createFormGroupBox()
 {
     QFormLayout* layout = new QFormLayout;
-    formGroupBox = new QGroupBox(tr("Sequence Information"));
+    formGroupBox = new QGroupBox(tr("Load Sequence Data"));
 
     // LABELS
     QLabel* orderLabel = new QLabel(tr("Over Field: "));

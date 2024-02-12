@@ -2,4 +2,3 @@ total number of sequences of small complexity 10 is: 32
 total number of debruijn sequences of complexity 74 is: 696
 The total number of sequences of small complexity=10 which yield debruijn sequences is: 4
 The total number of sequences of small complexity=10 which DO NOT yield any debruijn sequences is: 28
-

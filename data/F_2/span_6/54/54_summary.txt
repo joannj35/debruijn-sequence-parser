@@ -2,4 +2,3 @@ total number of sequences of small complexity 22 is: 65536
 total number of debruijn sequences of complexity 54 is: 67700
 The total number of sequences of small complexity=22 which yield debruijn sequences is: 22146
 The total number of sequences of small complexity=22 which DO NOT yield any debruijn sequences is: 43390
-

@@ -3,4 +3,3 @@ Total number of sequences in this file: 3
 00011011
 00100111
 01011111
-

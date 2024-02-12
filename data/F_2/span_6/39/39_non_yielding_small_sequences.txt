@@ -8,4 +8,3 @@ Total number of sequences in this file: 8
 00110101
 00111111
 01101111
-

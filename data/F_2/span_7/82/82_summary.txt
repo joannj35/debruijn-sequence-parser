@@ -2,4 +2,3 @@ total number of sequences of small complexity 18 is: 4096
 total number of debruijn sequences of complexity 82 is: 7496
 The total number of sequences of small complexity=18 which yield debruijn sequences is: 1305
 The total number of sequences of small complexity=18 which DO NOT yield any debruijn sequences is: 2791
-

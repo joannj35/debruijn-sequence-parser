@@ -30,6 +30,18 @@ int main(int argc, char* argv[]) {
 
         "QDialogButtonBox > QPushButton { "
         "  min-width: 50px; " // Minimum width for both buttons
+        "}"
+
+        "QGroupBox { "
+        "border: 2px solid #2196F3; "
+        "  border-radius: 4px; "
+        "  margin-top: 2ex; "
+        "} "
+
+        "QGroupBox::title { "
+        "  subcontrol-origin: margin; "
+        "  subcontrol-position: top center; " // Adjust title position to center if you want
+        "  padding: 0 3px 0 3px; " 
         "}";
 
     QString messageBoxStyle;

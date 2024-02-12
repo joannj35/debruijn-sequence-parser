@@ -1,4 +1,4 @@
-Summary of sequences of small complexity=5 which yield debruijn sequences:
+Summary of sequences of small complexity=0 which yield debruijn sequences:
 Total number of sequences in this file: 80
 00102
 00103

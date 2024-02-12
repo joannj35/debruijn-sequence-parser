@@ -2,4 +2,3 @@ total number of sequences of small complexity 15 is: 1024
 total number of debruijn sequences of complexity 47 is: 1168
 The total number of sequences of small complexity=15 which yield debruijn sequences is: 260
 The total number of sequences of small complexity=15 which DO NOT yield any debruijn sequences is: 764
-
