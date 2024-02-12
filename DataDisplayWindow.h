@@ -37,6 +37,7 @@ private:
     QPushButton* inspectButton;
     QCheckBox* yieldingCheckbox;
     QCheckBox* NonYieldingCheckbox;
+    QCheckBox* yieldingSmallCheckbox;
     QCheckBox* filterSmallSeqCheckbox;
     QCheckBox* noFilterCheckbox;
     QGroupBox* filtersGroupBox;

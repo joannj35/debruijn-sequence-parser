@@ -83,7 +83,16 @@ void DataDisplayWindow::createResultsGroupBox()
 void DataDisplayWindow::createFiltersGroupBox()
 {
 	QFormLayout* filtersLayout = new QFormLayout;
-	filtersGroupBox = new QGroupBox(tr("Filters"));
+
+	filtersGroupBox = new QGroupBox(tr("Select Files To Open"));
+
+	QLabel* label = new QLabel(tr("Small sequences file options:"));
+	label->setStyleSheet("QLabel { font-weight : bold; }");
+
+	QWidget* verticalSpacerWidget = new QWidget();
+	verticalSpacerWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+	verticalSpacerWidget->setFixedHeight(3);
+	
 
 	// CHECK BOXES
 	noFilterCheckbox = new QCheckBox(tr("Original File"), this);
@@ -104,15 +113,20 @@ void DataDisplayWindow::createFiltersGroupBox()
 	// LABEL FONT
 	QFont groupBoxFont = filtersGroupBox->font();
 	groupBoxFont.setPointSize(11);
+	label->setFont(groupBoxFont);
 	filtersGroupBox->setFont(groupBoxFont); // group box title
 	noFilterCheckbox->setFont(groupBoxFont);
 	yieldingCheckbox->setFont(groupBoxFont);
+	yieldingSmallCheckbox->setFont(groupBoxFont);
 	NonYieldingCheckbox->setFont(groupBoxFont);
 	filterSmallSeqCheckbox->setFont(groupBoxFont);
 
 	// LAYOUT
 	filtersLayout->addRow(noFilterCheckbox);
-	filtersLayout->addRow(yieldingCheckbox);
+	filtersLayout->addRow(yieldingCheckbox);  //add spacing inbetween 
+	filtersLayout->addRow(tr(""), verticalSpacerWidget);
+	filtersLayout->addRow(label);
+	filtersLayout->addRow(yieldingSmallCheckbox);
 	filtersLayout->addRow(NonYieldingCheckbox);
 	filtersLayout->addRow(filterSmallSeqCheckbox);
 	filtersGroupBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -185,6 +199,7 @@ void DataDisplayWindow::onOpenFileClicked()
 	bool isNoFilterChecked = noFilterCheckbox->isChecked();
 	bool NonYieldingChecked = NonYieldingCheckbox->isChecked();
 	bool yieldingChecked = yieldingCheckbox->isChecked();
+	bool yieldingSmallChecked = yieldingSmallCheckbox->isChecked();
 	bool smallSeqChecked = filterSmallSeqCheckbox->isChecked();
 	QString fileName = "";
 
@@ -194,13 +209,19 @@ void DataDisplayWindow::onOpenFileClicked()
 		noFilterCheckbox->setCheckState(Qt::Unchecked);
 	}
 
+	if (yieldingChecked) {
+		fileName = QString("/data/F_%1/span_%2/%3/%3_yielding_sequences.txt").arg(field).arg(span).arg(complexity);
+		openFileForUser(fileName);
+		yieldingSmallCheckbox->setCheckState(Qt::Unchecked);
+	}
+
 	if (NonYieldingChecked) {
 		fileName = QString("/data/F_%1/span_%2/%3/%3_non_yielding_small_sequences.txt").arg(field).arg(span).arg(complexity);
 		openFileForUser(fileName);
 		NonYieldingCheckbox->setCheckState(Qt::Unchecked);
 	}
 
-	if (yieldingChecked) {
+	if (yieldingSmallChecked) {
 		fileName = QString("/data/F_%1/span_%2/%3/%3_yielding_small_sequences.txt").arg(field).arg(span).arg(complexity);
 		openFileForUser(fileName);
 		yieldingCheckbox->setCheckState(Qt::Unchecked);
@@ -348,10 +369,11 @@ void DataDisplayWindow::onInspectButtonClicked()
 
 	// inform the user that the inspection is complete
 	if (!inspectSeparatelyChecked) {
-		QMessageBox::information(this, tr("Success"), tr("Inspection complete. Click OK to open the inspection result file."));
+		QMessageBox::information(this, tr("Success"), tr("Inspection complete.\n\nClick OK to open the inspection result file."));
 		QDesktopServices::openUrl(QUrl::fromLocalFile(fileOut.fileName()));
 	}
 	else {
-		QMessageBox::information(this, tr("Success"), tr("All separate inspections completed. The results were saved under a new folder <inspection_result> in your desktop"));
+		QMessageBox::information(this, tr("Success"), tr("All separate inspections completed.\nThe results were saved under a new folder <inspection_result> in your desktop.\n\nClick OK to open the inspection result directory."));
+		QDesktopServices::openUrl(QUrl::fromLocalFile(desktopPath + "/" + folderName));
 	}
 }
