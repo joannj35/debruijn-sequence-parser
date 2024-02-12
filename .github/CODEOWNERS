@@ -1,0 +1,5 @@
+# global owners for everything in the repo
+* @joannj35 @RazanDally
+
+# Specific owner for the CODEOWNERS file
+/.github/CODEOWNERS @joannj35
