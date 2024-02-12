@@ -1,0 +1,4 @@
+total number of sequences of small complexity 6 is: 100842
+total number of debruijn sequences of complexity 20 is: 2352
+The total number of sequences of small complexity=6 which yield debruijn sequences is: 132
+The total number of sequences of small complexity=6 which DO NOT yield any debruijn sequences is: 100710
