@@ -1,4 +1,0 @@
-total number of sequences of small complexity 14 is: 512
-total number of debruijn sequences of complexity 46 is: 896
-The total number of sequences of small complexity=14 which yield debruijn sequences is: 139
-The total number of sequences of small complexity=14 which DO NOT yield any debruijn sequences is: 373

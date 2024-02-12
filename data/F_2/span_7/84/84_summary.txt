@@ -1,4 +1,0 @@
-total number of sequences of small complexity 20 is: 16384
-total number of debruijn sequences of complexity 84 is: 26964
-The total number of sequences of small complexity=20 which yield debruijn sequences is: 5067
-The total number of sequences of small complexity=20 which DO NOT yield any debruijn sequences is: 11317

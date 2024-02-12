@@ -1,4 +1,0 @@
-total number of sequences of small complexity 4 is: 2058
-total number of debruijn sequences of complexity 18 is: 0
-The total number of sequences of small complexity=4 which yield debruijn sequences is: 0
-The total number of sequences of small complexity=4 which DO NOT yield any debruijn sequences is: 2058

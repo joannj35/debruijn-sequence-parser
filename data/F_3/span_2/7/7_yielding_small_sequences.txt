@@ -1,4 +1,0 @@
-Summary of sequences of small complexity=1 which yield debruijn sequences:
-Total number of sequences in this file: 2
-111
-222

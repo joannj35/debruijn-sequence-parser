@@ -1,4 +1,0 @@
-total number of sequences of small complexity 1 is: 6
-total number of debruijn sequences of complexity 22 is: 9072
-The total number of sequences of small complexity=1 which yield debruijn sequences is: 6
-The total number of sequences of small complexity=1 which DO NOT yield any debruijn sequences is: 0

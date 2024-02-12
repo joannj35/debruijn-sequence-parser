@@ -1,4 +1,0 @@
-total number of sequences of small complexity 17 is: 2048
-total number of debruijn sequences of complexity 81 is: 8276
-The total number of sequences of small complexity=17 which yield debruijn sequences is: 636
-The total number of sequences of small complexity=17 which DO NOT yield any debruijn sequences is: 1412

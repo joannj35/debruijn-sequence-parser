@@ -1,4 +1,0 @@
-total number of sequences of small complexity 19 is: 8192
-total number of debruijn sequences of complexity 51 is: 8704
-The total number of sequences of small complexity=19 which yield debruijn sequences is: 2717
-The total number of sequences of small complexity=19 which DO NOT yield any debruijn sequences is: 5475

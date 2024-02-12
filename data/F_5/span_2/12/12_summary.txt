@@ -1,4 +1,0 @@
-total number of sequences of small complexity 2 is: 20
-total number of debruijn sequences of complexity 12 is: 0
-The total number of sequences of small complexity=2 which yield debruijn sequences is: 0
-The total number of sequences of small complexity=2 which DO NOT yield any debruijn sequences is: 20

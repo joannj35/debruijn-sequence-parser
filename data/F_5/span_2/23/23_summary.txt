@@ -1,4 +1,0 @@
-total number of sequences of small complexity 3 is: 100
-total number of debruijn sequences of complexity 23 is: 159523800
-The total number of sequences of small complexity=3 which yield debruijn sequences is: 100
-The total number of sequences of small complexity=3 which DO NOT yield any debruijn sequences is: 0

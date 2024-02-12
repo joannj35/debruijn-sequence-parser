@@ -1,4 +1,0 @@
-total number of sequences of small complexity 1 is: 2
-total number of debruijn sequences of complexity 7 is: 12
-The total number of sequences of small complexity=1 which yield debruijn sequences is: 2
-The total number of sequences of small complexity=1 which DO NOT yield any debruijn sequences is: 0
