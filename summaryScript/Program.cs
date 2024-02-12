@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace parserExtentions
 {
@@ -41,9 +42,10 @@ namespace parserExtentions
             GetValueBasedOnRegex(fileContent, @"complexity (\d+)\s*:", out int complexity);
 
             // output file paths
-            string yieldingFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_yielding_small_sequences.txt");
+            string yieldingFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_yielding_small_sequences.txt"); //small sequences only
             string nonYieldingFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_non_yielding_small_sequences.txt");
             string summaryFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_summary.txt");
+            string filteredFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_yielding_sequences.txt"); // small sequences and their yielded deBruijns
 
             // skip processing if files already exist
             if (File.Exists(yieldingFilePath) || File.Exists(nonYieldingFilePath) || File.Exists(summaryFilePath))
@@ -57,30 +59,38 @@ namespace parserExtentions
                 using (StreamWriter nonZeroWriter = File.AppendText(yieldingFilePath))
                 using (StreamWriter zeroWriter = File.AppendText(nonYieldingFilePath))
                 using (StreamWriter summaryWriter = File.AppendText(summaryFilePath))
+                using (StreamWriter yieldingWriter = File.AppendText(filteredFilePath))
                 {
                     foreach (Match match in Regex.Matches(fileContent, pattern))
                         summaryWriter.WriteLine(match.Value);
                     
+                    //calculate small complexity
                     GetSmallSeq(fileContent, out List<string> yieldDb, out List<string> nonYieldDb);
-                    
                     var smallComplexity = field == 2 ? (complexity - Math.Pow(field, span - 1)) : (complexity % field);
 
+                    //summary overview
                     summaryWriter.WriteLine($"The total number of sequences of small complexity={smallComplexity} which yield debruijn sequences is: {yieldDb.Count}\n"
                                   + $"The total number of sequences of small complexity={smallComplexity} which DO NOT yield any debruijn sequences is: {nonYieldDb.Count}");
 
+                    //yielding small sequences
                     nonZeroWriter.WriteLine($"Summary of sequences of small complexity={smallComplexity} which yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {yieldDb.Count}");
                     foreach (var seq in yieldDb)
                         nonZeroWriter.WriteLine($"{seq}");
 
+                    //non yielding small sequnences
                     zeroWriter.WriteLine($"Summary of sequences of small complexity={smallComplexity} which DO NOT yield debruijn sequences:\n"
                         + $"Total number of sequences in this file: {nonYieldDb.Count}");
                     foreach (var seq in nonYieldDb)
                         zeroWriter.WriteLine($"{seq}");
 
+                    //yielding small sequences and their yielded deBruijns
+                    FilterYieldingSequences(fileContent, out string filteredFileContent, out int capturedSequencesNum);
+                    yieldingWriter.WriteLine(filteredFileContent);
+
                     // sanity check
                     GetValueBasedOnRegex(fileContent, @"of small complexity \d+ is: (\d+)", out int total);
-                    if (nonYieldDb.Count + yieldDb.Count != total)
+                    if (nonYieldDb.Count + yieldDb.Count != total || capturedSequencesNum != yieldDb.Count)
                         throw new Exception($"Sanity check for complexity {complexity} has failed! No summary files will be created.");
 
                     Console.WriteLine($"Processed file of complexity {complexity}");
@@ -103,7 +113,7 @@ namespace parserExtentions
             value = match.Success ? int.Parse(match.Groups[1].Value) : -1;
         }
 
-        /// <summary> Extracts sequences that yield and do not yield DeBruijn sequences from file </summary>
+        /// <summary> Extracts SMALL sequences that yield and do not yield DeBruijn sequences from file </summary>
         /// <param name="yieldDb">list of sequences of small complexity which yield debruijn sequences</param>
         /// <param name="nonYieldDb">list of sequences of small complexity which DIDNT yield debruijn sequences</param>
         static void GetSmallSeq(string fileContent, out List<string> yieldDb, out List<string> nonYieldDb)
@@ -121,6 +131,32 @@ namespace parserExtentions
                 else
                     yieldDb.Add(match.Groups[1].Value);
             }
+        }
+
+        /// <summary> Extracts yielding small sequences AND their yielded deBruijns  </summary>
+        /// <param name="filteredFileContent"> the filtered file content </param>
+        /// <param name="yieldingSequencesNum"> the amount of yielding small sequences captured by the regex (used for sanity check) </param>
+        static void FilterYieldingSequences(string fileContent, out string filteredFileContent, out int capturedSequencesNum)
+        {
+            string pattern1 = @"For order \d+ complexity \d+ :";
+            string pattern2 = @"Debruijn Sequences generated by the sequence \d+ : [\s\S]*?the number of Debruijn sequences: (\d+)";
+            StringBuilder sb = new StringBuilder();
+            capturedSequencesNum = 0;
+
+            var matchLine = Regex.Match(fileContent, pattern1);
+            sb.AppendLine(matchLine.Value + "\n");
+
+            var matchCollection = Regex.Matches(fileContent, pattern2);
+            foreach (Match match in matchCollection)
+            {
+                if (match.Groups[1].Value != "0")
+                {
+                    sb.AppendLine(match.Value + "\n"); // Append the whole match
+                    capturedSequencesNum++; // for sanity check later
+                }
+            }
+
+            filteredFileContent = sb.ToString();
         }
         /// <summary>
         /// in case of an error, the corrupted files of the specified complexities are deleted
