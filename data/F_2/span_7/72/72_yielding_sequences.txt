@@ -1,3 +1,4 @@
 For order 7 complexity 72:
 
+The amount of yielded deBruijn sequences is 0
 

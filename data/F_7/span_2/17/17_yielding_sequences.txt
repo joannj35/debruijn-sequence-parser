@@ -1,3 +1,4 @@
 For order 2 complexity 17:
 
+The amount of yielded deBruijn sequences is 0
 

@@ -1,3 +1,4 @@
 For order 6 complexity 39:
 
+The amount of yielded deBruijn sequences is 0
 
