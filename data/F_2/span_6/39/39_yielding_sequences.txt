@@ -1,0 +1,3 @@
+For order 6 complexity 39:
+
+

@@ -1,0 +1,6 @@
+Summary of sequences of small complexity=9 which yield debruijn sequences:
+Total number of sequences in this file: 4
+0000010011111011
+0000011011111001
+0001001011101101
+0001011011101001

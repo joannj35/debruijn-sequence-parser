@@ -1,0 +1,4 @@
+total number of sequences of small complexity 6 is: 4
+total number of debruijn sequences of complexity 38 is: 448
+The total number of sequences of small complexity=6 which yield debruijn sequences is: 1
+The total number of sequences of small complexity=6 which DO NOT yield any debruijn sequences is: 3
