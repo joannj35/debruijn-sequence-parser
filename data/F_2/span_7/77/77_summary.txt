@@ -1,0 +1,4 @@
+total number of sequences of small complexity 13 is: 256
+total number of debruijn sequences of complexity 77 is: 12432
+The total number of sequences of small complexity=13 which yield debruijn sequences is: 65
+The total number of sequences of small complexity=13 which DO NOT yield any debruijn sequences is: 191

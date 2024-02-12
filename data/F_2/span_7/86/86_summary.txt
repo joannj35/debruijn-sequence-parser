@@ -1,0 +1,4 @@
+total number of sequences of small complexity 22 is: 65536
+total number of debruijn sequences of complexity 86 is: 103912
+The total number of sequences of small complexity=22 which yield debruijn sequences is: 20115
+The total number of sequences of small complexity=22 which DO NOT yield any debruijn sequences is: 45421
