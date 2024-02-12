@@ -1,0 +1,22 @@
+Summary of sequences of small complexity=2 which yield debruijn sequences:
+Total number of sequences in this file: 20
+13024
+30241
+41302
+04321
+20314
+24130
+23401
+01234
+21043
+12340
+02413
+40123
+43210
+42031
+31420
+34012
+10432
+03142
+32104
+14203

@@ -1,0 +1,4 @@
+total number of sequences of small complexity 1 is: 4
+total number of debruijn sequences of complexity 16 is: 1920
+The total number of sequences of small complexity=1 which yield debruijn sequences is: 4
+The total number of sequences of small complexity=1 which DO NOT yield any debruijn sequences is: 0
