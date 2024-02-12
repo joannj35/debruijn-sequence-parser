@@ -48,7 +48,7 @@ namespace parserExtentions
             string filteredFilePath = Path.Combine(ComplexityDirPath, $"{complexity}_yielding_sequences.txt"); // small sequences and their yielded deBruijns
 
             // skip processing if files already exist
-            if (File.Exists(yieldingFilePath) || File.Exists(nonYieldingFilePath) || File.Exists(summaryFilePath))
+            if (File.Exists(filteredFilePath) || File.Exists(yieldingFilePath) || File.Exists(nonYieldingFilePath) || File.Exists(summaryFilePath))
             {
                 Console.WriteLine($"Skipping file processing as output files for complexity {complexity} already exist.");
                 return;
@@ -150,7 +150,7 @@ namespace parserExtentions
             
             if(matchCollection.Count == 0)
             {
-                sb.AppendLine("The amount of yielded deBruijn sequences is 0"); // Append the whole match
+                throw new Exception("File format incorrect");
             }
             else
             {
@@ -164,8 +164,12 @@ namespace parserExtentions
                 }
             }
 
+            if( capturedSequencesNum == 0 )
+                sb.AppendLine("The amount of yielded deBruijn sequences is 0"); // Append the whole match
+
             filteredFileContent = sb.ToString();
         }
+
         /// <summary>
         /// in case of an error, the corrupted files of the specified complexities are deleted
         /// </summary>
