@@ -9,7 +9,7 @@ linear complexity for which there exist de Bruijn sequences of given span over f
 
 The repository houses a user-friendly GUI tool designed to visualize the result data of our study, thereby offering a more tangible grasp of the complexity distributions. For the source code of the computational tool that generated the results, please visit the [tool repository](https://github.com/joannj35/debruijn-sequence-complexity-distribution).
 
-## Data Provided
+## Datasets
 The tool is preloaded with a diverse set of data for analyzing de Bruijn sequences across various fields and spans. The datasets are organized as follows:
 ```
 data/
@@ -60,11 +60,13 @@ data/
 2. Run the installer and follow the on-screen instructions to complete the installation.
 3. Launch the De Bruijn Sequence Parser app from your desktop or start menu.
 
-## Contributing
-Contributions to this project are highly appreciated. If you have suggestions or improvements, please fork the appropriate branch of the repository, make your changes, and submit a pull request.
+## Citation
+If you use this software or the [data it produces](https://github.com/joannj35/debruijn-sequence-parser/tree/master/data) in your work,  please cite it using the following reference:
 
-## Support
-If you encounter any issues or require assistance, please open an issue on the repository's [issue page](https://github.com/joannj35/debruijn-sequence-parser/issues).
+Etzion, T., Jozen, J., & Dally, R. (2024). debruijn-sequence-complexity-distribution (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.10685239
 
 ## LICENSE
 This project is licensed under Apache License 2.0. For more information, see the LICENSE file in this repository.
+
+## Support
+If you encounter any issues or require assistance, please open an issue on the repository's [issue page](https://github.com/joannj35/debruijn-sequence-parser/issues).
