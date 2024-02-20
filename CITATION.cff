@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or the data it produces in your work, please cite it using the following metadata"
+authors:
+- family-names: "Etzion"
+  given-names: "Tuvi"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+- family-names: "Jozen"
+  given-names: "Joan"
+  orcid: " https://orcid.org/0009-0001-3292-0587"
+- family-names: "Dally"
+  given-names: "Razan"
+  orcid: "https://orcid.org/0009-0003-3466-2643"
+title: "debruijn-sequence-complexity-distribution"
+version: 1.0.0
+doi: 10.5281/zenodo.10685239
+date-released: 2024-02-20
+url: "https://doi.org/10.5281/zenodo.10685239"
+  
